@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardUseCompatPadding="true"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/innerConstraintLayout"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+
+            <TextView
+                android:id="@+id/docnumLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Обращение № "
+                android:textStyle="bold"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <TextView
+                android:id="@+id/docnumValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="123456"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                app:layout_constraintStart_toEndOf="@+id/docnumLabel"
+                app:layout_constraintBaseline_toBaselineOf="@id/docnumLabel" />
+
+            <TextView
+                android:id="@+id/datetime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="01.04.2025 15:00"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/docnumLabel" />
+
+            <TextView
+                android:id="@+id/abonentLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Организация: "
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@+id/datetime"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/abonentValue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Объединение «МотоРоссия»"
+                app:layout_constraintStart_toEndOf="@+id/abonentLabel"
+                app:layout_constraintBaseline_toBaselineOf="@+id/abonentLabel"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <TextView
+                android:id="@+id/clientLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Обратившийся: "
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/abonentValue" />
+
+            <TextView
+                android:id="@+id/clientValue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Антонов"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/clientLabel"
+                app:layout_constraintBaseline_toBaselineOf="@+id/clientLabel"/>
+
+            <TextView
+                android:id="@+id/addressLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Адрес: "
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/clientValue" />
+
+            <TextView
+                android:id="@+id/addressValue"
+                android:layout_height="wrap_content"
+
+                android:text="600000, Владимир, Ленинский район, Никитская улица"
+                app:layout_constraintStart_toEndOf="@+id/addressLabel"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBaseline_toBaselineOf="@+id/addressLabel"
+                android:layout_width="0dp" />
+
+            <TextView
+                android:id="@+id/statusLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Статус: "
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@+id/addressValue"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/statusValue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+
+                android:text="Отменена обратившимся"
+                app:layout_constraintStart_toEndOf="@+id/statusLabel"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBaseline_toBaselineOf="@id/statusLabel" />
+
+            <TextView
+                android:id="@+id/operatorLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Оператор: "
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@+id/statusValue"
+                app:layout_constraintStart_toStartOf="parent"
+                />
+
+            <TextView
+                android:id="@+id/operatorValue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+
+                android:text="Админ"
+                app:layout_constraintStart_toEndOf="@+id/operatorLabel"
+                app:layout_constraintBaseline_toBaselineOf="@+id/operatorLabel"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:layout_editor_absoluteX="70dp"
+                tools:layout_editor_absoluteY="180dp" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

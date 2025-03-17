@@ -1,0 +1,16 @@
+<resources>
+    <declare-styleable name="TitleTextInputView">
+        <attr name="titleText" format="string" />
+        <attr name="inputText" format="string" />
+        <attr name="autofillHints" format="string" />
+        <attr name="inputHint" format="string" />
+        <attr name="inputType" format="string" />
+        <attr name="singleLine" format="boolean" />
+        <attr name="enabled" format="boolean" />
+
+<!--        <attr name="exampleString" format="string" />-->
+<!--        <attr name="exampleDimension" format="dimension" />-->
+<!--        <attr name="exampleColor" format="color" />-->
+<!--        <attr name="exampleDrawable" format="color|reference" />-->
+    </declare-styleable>
+</resources>

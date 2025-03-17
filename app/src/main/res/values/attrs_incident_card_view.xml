@@ -1,0 +1,16 @@
+<resources>
+    <declare-styleable name="IncidentCardView">
+        <attr name="docnum" format="string" />
+        <attr name="datetime" format="string" />
+        <attr name="abonent" format="string" />
+        <attr name="client" format="string" />
+        <attr name="address" format="string" />
+        <attr name="status" format="string" />
+        <attr name="operator" format="string" />
+
+<!--        <attr name="exampleString" format="string" />-->
+<!--        <attr name="exampleDimension" format="dimension" />-->
+<!--        <attr name="exampleColor" format="color" />-->
+<!--        <attr name="exampleDrawable" format="color|reference" />-->
+    </declare-styleable>
+</resources>

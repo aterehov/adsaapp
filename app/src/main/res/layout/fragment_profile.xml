@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.menufragments.profile.ProfileFragment">
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/profileMainNestedScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/profileMainConstraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ru.anoadsa.adsaapp.ui.views.DividerTitleView
+                android:id="@+id/profilePersonalDataDT"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:text="@string/profilePersonalDataDTText" />
+
+            <ru.anoadsa.adsaapp.ui.views.TitleTextInputView
+                android:id="@+id/profileSurnameTTI"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="36dp"
+                android:layout_marginEnd="24dp"
+                android:maxWidth="488dp"
+                app:autofillHints="personFamilyName"
+                app:inputHint="@string/profileSurnameTTIInputHint"
+                app:inputType="textPersonName"
+                app:layout_constraintLeft_toLeftOf="@+id/profilePersonalDataDT"
+                app:layout_constraintRight_toRightOf="@+id/profilePersonalDataDT"
+                app:layout_constraintTop_toBottomOf="@+id/profilePersonalDataDT"
+                app:singleLine="true"
+                app:titleText="@string/profileSurnameTTITitleText" />
+
+            <ru.anoadsa.adsaapp.ui.views.TitleTextInputView
+                android:id="@+id/profileNameTTI"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="24dp"
+                android:maxWidth="488dp"
+                app:autofillHints="personGivenName"
+                app:inputHint="@string/profileNameTTIInputHint"
+                app:inputType="textPersonName"
+                app:layout_constraintLeft_toLeftOf="@+id/profileSurnameTTI"
+                app:layout_constraintRight_toRightOf="@+id/profileSurnameTTI"
+                app:layout_constraintTop_toBottomOf="@+id/profileSurnameTTI"
+                app:singleLine="true"
+                app:titleText="@string/profileNameTTITitleText" />
+
+            <ru.anoadsa.adsaapp.ui.views.TitleTextInputView
+                android:id="@+id/profileMidnameTTI"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="24dp"
+                android:maxWidth="488dp"
+                app:autofillHints="personMiddleName"
+                app:inputHint="@string/profileMidnameTTIInputHint"
+                app:inputType="textPersonName"
+                app:layout_constraintLeft_toLeftOf="@+id/profileNameTTI"
+                app:layout_constraintRight_toRightOf="@+id/profileNameTTI"
+                app:layout_constraintTop_toBottomOf="@+id/profileNameTTI"
+                app:singleLine="true"
+                app:titleText="@string/profileMidnameTTITitleText" />
+
+            <ru.anoadsa.adsaapp.ui.views.DividerTitleView
+                android:id="@+id/profileCommunicationMethodsDT"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="36dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintLeft_toLeftOf="@+id/profileMidnameTTI"
+                app:layout_constraintRight_toRightOf="@+id/profileMidnameTTI"
+                app:layout_constraintTop_toBottomOf="@+id/profileMidnameTTI"
+                app:text="@string/profileCommunicationMethodsDTText" />
+
+            <ru.anoadsa.adsaapp.ui.views.TitleTextInputView
+                android:id="@+id/profilePhoneTTI"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="36dp"
+                android:layout_marginEnd="24dp"
+                android:maxWidth="488dp"
+                app:autofillHints="phoneNumber"
+                app:inputHint="@string/profilePhoneTTIInputHint"
+                app:inputType="phone"
+                app:layout_constraintLeft_toLeftOf="@+id/profileCommunicationMethodsDT"
+                app:layout_constraintRight_toRightOf="@+id/profileCommunicationMethodsDT"
+                app:layout_constraintTop_toBottomOf="@+id/profileCommunicationMethodsDT"
+                app:singleLine="true"
+                app:titleText="@string/profilePhoneTTITitleText"
+                app:enabled="false"/>
+
+            <ru.anoadsa.adsaapp.ui.views.TitleTextInputView
+                android:id="@+id/profileEmailTTI"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="24dp"
+                android:maxWidth="488dp"
+                app:autofillHints="emailAddress"
+                app:inputHint="@string/profileEmailTTIInputHint"
+                app:inputType="textEmailAddress"
+                app:layout_constraintLeft_toLeftOf="@+id/profilePhoneTTI"
+                app:layout_constraintRight_toRightOf="@+id/profilePhoneTTI"
+                app:layout_constraintTop_toBottomOf="@+id/profilePhoneTTI"
+                app:singleLine="true"
+                app:titleText="@string/profileEmailTTITitleText" />
+
+            <ru.anoadsa.adsaapp.ui.views.DividerTitleView
+                android:id="@+id/profileCarInfoDT"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="36dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintLeft_toLeftOf="@+id/profileEmailTTI"
+                app:layout_constraintRight_toRightOf="@+id/profileEmailTTI"
+                app:layout_constraintTop_toBottomOf="@+id/profileEmailTTI"
+                app:text="@string/profileCarInfoDTText" />
+
+            <ru.anoadsa.adsaapp.ui.views.TitleTextInputView
+                android:id="@+id/profileСarBrandTTI"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="36dp"
+                android:layout_marginEnd="24dp"
+                android:maxWidth="488dp"
+                app:autofillHints="notApplicable"
+                app:inputHint="@string/profileCarBrandTTIInputHint"
+                app:inputType="text"
+                app:layout_constraintLeft_toLeftOf="@+id/profileCarInfoDT"
+                app:layout_constraintRight_toRightOf="@+id/profileCarInfoDT"
+                app:layout_constraintTop_toBottomOf="@+id/profileCarInfoDT"
+                app:singleLine="true"
+                app:titleText="@string/profileCarBrandTTITitleText" />
+
+            <ru.anoadsa.adsaapp.ui.views.TitleTextInputView
+                android:id="@+id/profileCarNumberTTI"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="24dp"
+                android:maxWidth="488dp"
+                app:autofillHints="notApplicable"
+                app:inputHint="@string/profileCarNumberTTIInputHint"
+                app:inputType="text"
+                app:layout_constraintLeft_toLeftOf="@+id/profileСarBrandTTI"
+                app:layout_constraintRight_toRightOf="@+id/profileСarBrandTTI"
+                app:layout_constraintTop_toBottomOf="@+id/profileСarBrandTTI"
+                app:singleLine="true"
+                app:titleText="@string/profileCarNumberTTITitleText" />
+
+            <ru.anoadsa.adsaapp.ui.views.DividerTitleView
+                android:id="@+id/profileDocumentsDT"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="36dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintLeft_toLeftOf="@+id/profileCarNumberTTI"
+                app:layout_constraintRight_toRightOf="@+id/profileCarNumberTTI"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/profileCarNumberTTI"
+                app:text="@string/profileDocumentsDTText" />
+
+
+            <ru.anoadsa.adsaapp.ui.views.TitleTextInputView
+                android:id="@+id/profileOsagoTTI"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="36dp"
+                android:layout_marginEnd="24dp"
+                android:maxWidth="488dp"
+                app:autofillHints="notApplicable"
+                app:inputHint="@string/profileOsagoTTIInputHint"
+                app:inputType="text"
+                app:layout_constraintLeft_toLeftOf="@+id/profileDocumentsDT"
+                app:layout_constraintRight_toRightOf="@+id/profileDocumentsDT"
+                app:layout_constraintTop_toBottomOf="@+id/profileDocumentsDT"
+                app:singleLine="true"
+                app:titleText="@string/profileOsagoTTITitleText" />
+
+
+            <ru.anoadsa.adsaapp.ui.views.TitleTextInputView
+                android:id="@+id/profileSnilsTTI"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="24dp"
+                android:maxWidth="488dp"
+                app:autofillHints="notApplicable"
+                app:inputHint="@string/profileSnilsTTIInputHint"
+                app:inputType="number"
+                app:layout_constraintLeft_toLeftOf="@+id/profileOsagoTTI"
+                app:layout_constraintRight_toRightOf="@+id/profileOsagoTTI"
+                app:layout_constraintTop_toBottomOf="@+id/profileOsagoTTI"
+                app:singleLine="true"
+                app:titleText="@string/profileSnilsTTITitleText" />
+
+            <ru.anoadsa.adsaapp.ui.views.TitleTextInputView
+                android:id="@+id/profileMedPolisTTI"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="24dp"
+                android:maxWidth="488dp"
+                app:autofillHints="notApplicable"
+                app:inputHint="@string/profileMedPolisTTIInputHint"
+                app:inputType="number"
+                app:layout_constraintLeft_toLeftOf="@+id/profileSnilsTTI"
+                app:layout_constraintRight_toRightOf="@+id/profileSnilsTTI"
+                app:layout_constraintTop_toBottomOf="@+id/profileSnilsTTI"
+                app:singleLine="true"
+                app:titleText="@string/profileMedPolisTTITitleText" />
+
+            <ru.anoadsa.adsaapp.ui.views.DividerTitleView
+                android:id="@+id/profileOtherDT"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="36dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintLeft_toLeftOf="@+id/profileMedPolisTTI"
+                app:layout_constraintRight_toRightOf="@+id/profileMedPolisTTI"
+                app:layout_constraintTop_toBottomOf="@+id/profileMedPolisTTI"
+                app:text="@string/profileOtherDTText" />
+
+            <ru.anoadsa.adsaapp.ui.views.TitleTextInputView
+                android:id="@+id/profileBirthdayTTI"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="36dp"
+                android:layout_marginEnd="24dp"
+                android:maxWidth="488dp"
+                app:autofillHints="birthDateFull"
+                app:inputHint="@string/profileBirthdayTTIInputHint"
+                app:inputType="date"
+                app:layout_constraintLeft_toLeftOf="@+id/profileOtherDT"
+                app:layout_constraintRight_toRightOf="@+id/profileOtherDT"
+                app:layout_constraintTop_toBottomOf="@+id/profileOtherDT"
+                app:singleLine="true"
+                app:titleText="@string/profileBirthdayTTITitleText" />
+
+            <CalendarView
+                android:id="@+id/profileBirthdayCalendarView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="24dp"
+                android:firstDayOfWeek="2"
+                app:layout_constraintLeft_toLeftOf="@+id/profileBirthdayTTI"
+                app:layout_constraintRight_toRightOf="@+id/profileBirthdayTTI"
+                app:layout_constraintTop_toBottomOf="@+id/profileBirthdayTTI" />
+
+            <ru.anoadsa.adsaapp.ui.views.DividerTitleView
+                android:id="@+id/profilePasswordDT"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="36dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintLeft_toLeftOf="@+id/profileBirthdayCalendarView"
+                app:layout_constraintRight_toRightOf="@+id/profileBirthdayCalendarView"
+                app:layout_constraintTop_toBottomOf="@+id/profileBirthdayCalendarView"
+                app:text="@string/profilePasswordDTText" />
+
+
+            <ru.anoadsa.adsaapp.ui.views.TitleTextInputView
+                android:id="@+id/profilePassword1TTI"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="36dp"
+                android:layout_marginEnd="24dp"
+                android:maxWidth="488dp"
+                app:autofillHints="newPassword"
+                app:inputHint="@string/profilePassword1TTIInputHint"
+                app:inputType="textPassword"
+                app:layout_constraintLeft_toLeftOf="@+id/profilePasswordDT"
+                app:layout_constraintRight_toRightOf="@+id/profilePasswordDT"
+                app:layout_constraintTop_toBottomOf="@+id/profilePasswordDT"
+                app:singleLine="true"
+                app:titleText="@string/profilePassword1TTITitleText" />
+
+
+            <ru.anoadsa.adsaapp.ui.views.TitleTextInputView
+                android:id="@+id/profilePassword2TTI"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="24dp"
+                android:maxWidth="488dp"
+                app:autofillHints="newPassword"
+                app:inputHint="@string/profilePassword2TTIInputHint"
+                app:inputType="textPassword"
+                app:layout_constraintLeft_toLeftOf="@+id/profilePassword1TTI"
+                app:layout_constraintRight_toRightOf="@+id/profilePassword1TTI"
+                app:layout_constraintTop_toBottomOf="@+id/profilePassword1TTI"
+                app:singleLine="true"
+                app:titleText="@string/profilePassword2TTITitleText" />
+
+            <Button
+                android:id="@+id/profilePasswordButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/profilePasswordButtonText"
+                app:layout_constraintLeft_toLeftOf="@+id/profilePassword2TTI"
+                app:layout_constraintRight_toRightOf="@+id/profilePassword2TTI"
+                app:layout_constraintTop_toBottomOf="@+id/profilePassword2TTI" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

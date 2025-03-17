@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp">
+
+            <Button
+                android:id="@+id/incidentsNewButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Новое обращение"
+                android:layout_marginTop="24dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ru.anoadsa.adsaapp.ui.views.IncidentCardView
+                android:id="@+id/card1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/incidentsNewButton"
+                app:operator="Админ"
+                app:abonent="Объединение «МотоРоссия»"
+                app:client="Антонов"
+                app:address="600000, Владимир, Ленинский район, Никитская улица"
+                app:status="Отменена обратившимся"
+                app:docnum="233"
+                app:datetime="01.04.2025 15:00"
+                />
+
+            <ru.anoadsa.adsaapp.ui.views.IncidentCardView
+                android:id="@+id/card2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/card1"
+                app:operator=""
+                app:abonent='БФ \"Автоволонтеры\"'
+                app:client="Иванов"
+                app:address="600000, Владимир, Ленинский район, Дворянская улица, 1"
+                app:status="Предварительно назначена абоненту"
+                app:docnum="233"
+                app:datetime="01.04.2025 15:00"
+                />
+
+            <ru.anoadsa.adsaapp.ui.views.IncidentCardView
+                android:id="@+id/card3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/card2"
+                app:operator=""
+                app:abonent='Тестовый абонент'
+                app:client="Антонов"
+                app:address="600000, Владимир, Ленинский район, Никитская улица"
+                app:status="Предварительно назначена абоненту"
+                app:docnum="233"
+                app:datetime="01.04.2025 15:00"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

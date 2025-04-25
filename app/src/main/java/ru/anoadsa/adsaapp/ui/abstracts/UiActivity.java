@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
 public abstract class UiActivity<T extends ViewModel> extends AppCompatActivity {
-    protected ViewModel viewModel;
+    protected T viewModel;
     protected Class<T> vmclass;
 
     protected abstract void initUi();
@@ -18,6 +18,10 @@ public abstract class UiActivity<T extends ViewModel> extends AppCompatActivity 
         this.vmclass = vmclass;
     }
 
+    protected T getViewModel() {
+        return viewModel;
+    }
+
     protected void configureViewModel() {
         if(vmclass != null) {
             viewModel = new ViewModelProvider(this).get(vmclass);
@@ -26,6 +30,8 @@ public abstract class UiActivity<T extends ViewModel> extends AppCompatActivity 
 
     protected abstract void configureUiActions();
 
+    protected abstract void configureViewModelActions();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,5 +39,6 @@ public abstract class UiActivity<T extends ViewModel> extends AppCompatActivity 
         configureUiState();
         configureViewModel();
         configureUiActions();
+        configureViewModelActions();
     }
 }

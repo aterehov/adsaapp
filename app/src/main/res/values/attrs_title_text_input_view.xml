@@ -7,6 +7,9 @@
         <attr name="inputType" format="string" />
         <attr name="singleLine" format="boolean" />
         <attr name="enabled" format="boolean" />
+        <attr name="minLines" format="integer" />
+        <attr name="digitsTTIV" format="string" />
+        <attr name="listenerTypeTTIV" format="string" />
 
 <!--        <attr name="exampleString" format="string" />-->
 <!--        <attr name="exampleDimension" format="dimension" />-->

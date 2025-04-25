@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/instructionText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Введите свое местоположение"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/incidentLocationCoordinatesCL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/instructionText"
+        android:layout_marginTop="16dp"
+        >
+
+        <ru.anoadsa.adsaapp.ui.views.TitleTextInputView
+            android:id="@+id/incidentLocationLatitudeTTIV"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:titleText="Широта*"
+            app:inputHint="Широта*"
+            app:inputType="numberDecimal|numberSigned"
+            app:singleLine="true"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/incidentLocationLongitudeTTIV"
+            />
+
+        <ru.anoadsa.adsaapp.ui.views.TitleTextInputView
+            android:id="@+id/incidentLocationLongitudeTTIV"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:titleText="Долгота*"
+            app:inputHint="Долгота*"
+            app:inputType="numberDecimal|numberSigned"
+            app:singleLine="true"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/incidentLocationLatitudeTTIV"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ru.anoadsa.adsaapp.ui.views.TitleTextInputView
+        android:id="@+id/incidentLocationAddressTTIV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:titleText="Адрес*"
+        app:inputHint="Адрес*"
+        app:inputType="textPostalAddress"
+        app:autofillHints="postalAddress"
+        app:singleLine="false"
+        app:layout_constraintTop_toBottomOf="@+id/incidentLocationCoordinatesCL"
+        android:layout_marginTop="16dp"
+        />
+
+    <TextView
+        android:id="@+id/incidentLocationAddressHint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Рекомендуемый формат адреса: индекс, город, район, улица, корпус, дом\nДля сельской местности: индекс, регион, район, муниципальное образование, населенный пункт, улица, корпус, дом"
+        app:layout_constraintTop_toBottomOf="@+id/incidentLocationAddressTTIV"
+        />
+
+    <TextView
+        android:id="@+id/incidentNominatimMentionText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/incidentNominatimMentionText"
+        android:textColor="@color/light_blue_600"
+        android:layout_marginTop="16dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/incidentLocationAddressHint" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

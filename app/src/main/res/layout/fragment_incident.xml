@@ -1,0 +1,853 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/incidentTopCL"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/incidentNSV"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/incidentInnerCL"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/incidentDocnumNewLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Новое "
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                />
+
+            <TextView
+                android:id="@+id/incidentDocnumLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="обращение "
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/incidentDocnumNewLabel"/>
+
+            <TextView
+                android:id="@+id/incidentDocnumValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="№ "
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                app:layout_constraintBaseline_toBaselineOf="@+id/incidentDocnumLabel"
+                app:layout_constraintStart_toEndOf="@+id/incidentDocnumLabel" />
+
+            <TableLayout
+                android:id="@+id/incidentBasicInfoTL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/incidentDocnumLabel"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+                <TableRow>
+                    <TextView
+                        android:id="@+id/createdLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_weight="0"
+                        android:layout_height="wrap_content"
+                        android:text="Создано: "
+                        android:textStyle="bold"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                        />
+
+                    <TextView
+                        android:id="@+id/createdValue"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                        />
+                </TableRow>
+
+                <TableRow>
+                    <TextView
+                        android:id="@+id/editedLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Изменено: "
+                        android:layout_weight="0"
+                        android:textStyle="bold"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
+
+                    <TextView
+                        android:id="@+id/editedValue"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
+                </TableRow>
+
+                <TableRow>
+                    <TextView
+                        android:id="@+id/statusLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_weight="0"
+                        android:layout_height="wrap_content"
+                        android:text="Статус: "
+                        android:textStyle="bold"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
+
+                    <TextView
+                        android:id="@+id/statusValue"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
+                </TableRow>
+
+                <TableRow>
+                    <TextView
+                        android:id="@+id/operatorLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0"
+                        android:text="Оператор: "
+                        android:textStyle="bold"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
+
+                    <TextView
+                        android:id="@+id/operatorValue"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+
+                        android:text=""
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
+                </TableRow>
+
+<!--                <TableRow>-->
+<!--                    <TextView-->
+<!--                        android:id="@+id/operatorLabel"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_weight="0"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Оператор: "-->
+<!--                        android:textStyle="bold"-->
+<!--                        />-->
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/operatorValue"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:layout_height="wrap_content"-->
+
+<!--                        android:text="Админ" />-->
+<!--                </TableRow>-->
+            </TableLayout>
+
+<!--            <TextView-->
+<!--                android:id="@+id/incidentDatetimeLabel"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Создана: "-->
+<!--                android:textAppearance="@style/TextAppearance.AppCompat.Large"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/incidentDocnumLabel"-->
+<!--                />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/incidentDatetime"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="01.04.2025 15:00"-->
+<!--                android:textAppearance="@style/TextAppearance.AppCompat.Large"-->
+<!--                app:layout_constraintBaseline_toBaselineOf="@+id/incidentDatetimeLabel"-->
+<!--                app:layout_constraintStart_toEndOf="@+id/incidentDatetimeLabel"/>-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/incidentEditDatetimeLabel"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Изменена: "-->
+<!--                android:textAppearance="@style/TextAppearance.AppCompat.Medium"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/incidentDatetimeLabel"-->
+<!--                />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/incidentEditDatetime"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="01.04.2025 18:00"-->
+<!--                android:textAppearance="@style/TextAppearance.AppCompat.Medium"-->
+<!--                app:layout_constraintBaseline_toBaselineOf="@+id/incidentEditDatetimeLabel"-->
+<!--                app:layout_constraintStart_toEndOf="@+id/incidentEditDatetimeLabel"/>-->
+
+            <Button
+                android:id="@+id/incidentChatButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Чат"
+                app:layout_constraintTop_toBottomOf="@id/incidentBasicInfoTL"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"/>
+
+            <Button
+                android:id="@+id/incidentVideoButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:text="Видеовызов с организацией"
+                app:layout_constraintTop_toBottomOf="@+id/incidentChatButton"
+                />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/incidentSecondaryButtonsCL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/incidentVideoButton"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                >
+
+                <Button
+                    android:id="@+id/incidentEditButton"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Изменить"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    />
+
+                <Button
+                    android:id="@+id/incidentRequestOperatorButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:text="Запрос оператора"
+
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/incidentEditButton"
+                    />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+<!--            <View-->
+<!--                android:id="@+id/incidentTopDivider"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="1dp"-->
+<!--                android:background="@android:color/darker_gray"-->
+<!--                app:layout_constraintBottom_toTopOf="@+id/incidentOrganisationCategoryTSV"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/incidentSecondaryButtonsConstraintLayout"-->
+<!--                android:layout_marginTop="8dp"-->
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/incidentMainCL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/incidentSecondaryButtonsCL"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="24dp"
+                >
+
+                <ru.anoadsa.adsaapp.ui.views.DividerTitleView
+                    android:id="@+id/incidentReceiverDTV"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:textDTV="Получатель обращения"
+                    app:layout_constraintTop_toTopOf="parent"
+                    />
+
+                <ru.anoadsa.adsaapp.ui.views.TitleSpinnerView
+                    android:id="@+id/incidentOrganisationCategoryTSV"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@+id/incidentReceiverDTV"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:textTSV="Категория организации*"
+                    android:layout_marginTop="36dp"
+                    />
+
+                <ru.anoadsa.adsaapp.ui.views.TitleSpinnerView
+                    android:id="@+id/incidentOrganisationTSV"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:textTSV="Организация*"
+                    app:layout_constraintTop_toBottomOf="@+id/incidentOrganisationCategoryTSV"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginTop="16dp"
+                    />
+
+                <ru.anoadsa.adsaapp.ui.views.TitleTextInputView
+                    android:id="@+id/incidentSearchRadiusTTIV"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:titleText="Радиус поиска, км*"
+                    app:inputHint="Радиус поиска*"
+                    app:inputText="20"
+                    app:inputType="numberDecimal"
+                    app:singleLine="true"
+                    app:layout_constraintTop_toBottomOf="@+id/incidentOrganisationTSV"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/incidentRadiusSearchButton"
+                    android:layout_marginTop="16dp"
+                    />
+
+                <Button
+                    android:id="@+id/incidentRadiusSearchButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Поиск"
+                    app:layout_constraintStart_toEndOf="@+id/incidentSearchRadiusTTIV"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="@+id/incidentSearchRadiusTTIV"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    />
+
+
+                <ru.anoadsa.adsaapp.ui.views.DividerTitleView
+                    android:id="@+id/incidentLocationDTV"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:textDTV="Место происшествия"
+                    app:layout_constraintTop_toBottomOf="@+id/incidentSearchRadiusTTIV"
+                    android:layout_marginTop="36dp"
+                    />
+
+                <Button
+                    android:id="@+id/incidentFillGeolocationButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Заполнить по геолокации"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    app:layout_constraintTop_toBottomOf="@+id/incidentLocationDTV"
+                    android:layout_marginTop="36dp" />
+
+<!--                <Button-->
+<!--                    android:id="@+id/incidentFillCoordinatesByAddressButton"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Заполнить по адресу"-->
+<!--                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"-->
+<!--                    app:layout_constraintTop_toBottomOf="@+id/incidentFillGeolocationButton"-->
+<!--                    android:layout_marginTop="0dp" />-->
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/incidentLocationCoordinatesCL"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/incidentFillGeolocationButton"
+                    android:layout_marginTop="16dp"
+                    >
+
+                        <ru.anoadsa.adsaapp.ui.views.TitleTextInputView
+                            android:id="@+id/incidentLocationLatitudeTTIV"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            app:titleText="Широта*"
+                            app:inputHint="Широта*"
+                            app:inputType="numberDecimal|numberSigned"
+                            app:singleLine="true"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/incidentLocationLongitudeTTIV"
+                            />
+
+                        <ru.anoadsa.adsaapp.ui.views.TitleTextInputView
+                            android:id="@+id/incidentLocationLongitudeTTIV"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            app:titleText="Долгота*"
+                            app:inputHint="Долгота*"
+                            app:inputType="numberDecimal|numberSigned"
+                            app:singleLine="true"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/incidentLocationLatitudeTTIV"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <ru.anoadsa.adsaapp.ui.views.TitleTextInputView
+                    android:id="@+id/incidentLocationAddressTTIV"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:titleText="Адрес*"
+                    app:inputHint="Адрес*"
+                    app:inputType="textPostalAddress"
+                    app:autofillHints="postalAddress"
+                    app:singleLine="false"
+                    app:layout_constraintTop_toBottomOf="@+id/incidentLocationCoordinatesCL"
+                    android:layout_marginTop="16dp"
+                    />
+
+                <TextView
+                    android:id="@+id/incidentLocationAddressHint"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Рекомендуемый формат адреса: индекс, город, район, улица, корпус, дом\nДля сельской местности: индекс, регион, район, муниципальное образование, населенный пункт, улица, корпус, дом"
+                    app:layout_constraintTop_toBottomOf="@+id/incidentLocationAddressTTIV"
+                    />
+
+<!--                <Button-->
+<!--                    android:id="@+id/incidentFillAddressButton"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Заполнить по координатам"-->
+<!--                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"-->
+<!--                    app:layout_constraintTop_toBottomOf="@+id/incidentLocationAddressHint"-->
+<!--                    android:layout_marginTop="16dp" />-->
+
+                <TextView
+                    android:id="@+id/incidentNominatimMentionText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/incidentNominatimMentionText"
+                    android:textColor="@color/light_blue_600"
+
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/incidentLocationAddressHint" />
+
+                <ru.anoadsa.adsaapp.ui.views.DividerTitleView
+                    android:id="@+id/incidentDTV"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:textDTV="Сведения о происшествии"
+                    app:layout_constraintTop_toBottomOf="@+id/incidentNominatimMentionText"
+                    android:layout_marginTop="36dp"
+                    />
+
+                <ru.anoadsa.adsaapp.ui.views.TitleSpinnerView
+                    android:id="@+id/incidentCategoryTSV"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:textTSV="Тип происшествия*"
+                    app:layout_constraintTop_toBottomOf="@+id/incidentDTV"
+                    android:layout_marginTop="36dp"
+                    />
+
+                <CheckBox
+                    android:id="@+id/incidentIsHurt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Есть пострадавшие"
+                    app:layout_constraintTop_toBottomOf="@+id/incidentCategoryTSV"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/incidentIsEyewitness"
+                    android:layout_marginTop="16dp"
+                    />
+
+                <CheckBox
+                    android:id="@+id/incidentIsEyewitness"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Являюсь очевидцем"
+                    app:layout_constraintTop_toBottomOf="@+id/incidentCategoryTSV"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/incidentIsHurt"
+                    />
+
+                <ru.anoadsa.adsaapp.ui.views.TitleTextInputView
+                    android:id="@+id/incidentDescriptionTTIV"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:titleText="Описание проблемы"
+                    app:inputType="textAutoCorrect"
+                    app:autofillHints="notApplicable"
+                    app:inputHint="Описание проблемы"
+                    app:singleLine="false"
+                    app:layout_constraintTop_toBottomOf="@+id/incidentIsEyewitness"
+                    android:layout_marginTop="16dp"
+                    app:minLines="2"
+                    />
+
+                <TextView
+                    android:id="@+id/incidentAddFilesLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Прикрепить файлы: "
+                    app:layout_constraintTop_toBottomOf="@+id/incidentDescriptionTTIV"
+                    android:layout_marginTop="16dp"
+                    />
+
+                <Button
+                    android:id="@+id/incidentAddPhotoButton"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Фото"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/incidentAddDocumentButton"
+                    app:layout_constraintTop_toBottomOf="@+id/incidentAddFilesLabel"
+                    android:layout_marginEnd="16dp"/>
+
+
+                <Button
+                    android:id="@+id/incidentAddDocumentButton"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Документ"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/incidentAddPhotoButton"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/incidentAddPhotoButton" />
+
+                <HorizontalScrollView
+                    android:id="@+id/incidentImagesListHSV"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@+id/incidentAddDocumentButton">
+                    
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/incidentImagesListCL"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <!-- Images attached to incident are displayed here -->
+
+<!--                        <ru.anoadsa.adsaapp.ui.views.AttachedImageView-->
+<!--                            android:id="@+id/incidentTestImage1"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            app:layout_constraintStart_toStartOf="parent"-->
+<!--                            app:layout_constraintTop_toTopOf="parent"-->
+<!--                            app:layout_constraintBottom_toBottomOf="parent" />-->
+
+<!--                        <ru.anoadsa.adsaapp.ui.views.AttachedImageView-->
+<!--                            android:id="@+id/incidentTestImage2"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            app:layout_constraintStart_toEndOf="@+id/incidentTestImage1"-->
+<!--                            app:layout_constraintTop_toTopOf="parent"-->
+<!--                            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                            android:layout_marginStart="0dp"/>-->
+
+<!--                        <ru.anoadsa.adsaapp.ui.views.AttachedImageView-->
+<!--                            android:id="@+id/incidentTestImage3"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            app:layout_constraintStart_toEndOf="@+id/incidentTestImage2"-->
+<!--                            app:layout_constraintTop_toTopOf="parent"-->
+<!--                            app:layout_constraintBottom_toBottomOf="parent" />-->
+
+<!--                        <ru.anoadsa.adsaapp.ui.views.AttachedImageView-->
+<!--                            android:id="@+id/incidentTestImage4"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            app:layout_constraintStart_toEndOf="@+id/incidentTestImage3"-->
+<!--                            app:layout_constraintTop_toTopOf="parent"-->
+<!--                            app:layout_constraintBottom_toBottomOf="parent" />-->
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </HorizontalScrollView>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/incidentFilesListCL"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    app:layout_constraintTop_toBottomOf="@+id/incidentImagesListHSV">
+                    <!-- Files added to incidents are displayed here -->
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <!-- =================================== -->
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/profileMainConstraintLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="36dp"
+                    app:layout_constraintTop_toBottomOf="@+id/incidentFilesListCL">
+
+                    <ru.anoadsa.adsaapp.ui.views.DividerTitleView
+                        android:id="@+id/profilePersonalDataDT"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:textDTV="@string/profilePersonalDataDTText" />
+
+                    <ru.anoadsa.adsaapp.ui.views.TitleTextInputView
+                        android:id="@+id/profileSurnameTTI"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="36dp"
+                        android:maxWidth="488dp"
+                        app:autofillHints="personFamilyName"
+                        app:inputHint="@string/profileSurnameTTIInputHint"
+                        app:inputType="textPersonName"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintLeft_toLeftOf="@+id/profilePersonalDataDT"
+                        app:layout_constraintRight_toRightOf="@+id/profilePersonalDataDT"
+                        app:layout_constraintTop_toBottomOf="@+id/profilePersonalDataDT"
+                        app:singleLine="true"
+                        app:titleText="@string/profileSurnameTTITitleText" />
+
+                    <ru.anoadsa.adsaapp.ui.views.TitleTextInputView
+                        android:id="@+id/profileNameTTI"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:maxWidth="488dp"
+                        app:autofillHints="personGivenName"
+                        app:inputHint="@string/profileNameTTIInputHint"
+                        app:inputType="textPersonName"
+                        app:layout_constraintLeft_toLeftOf="@+id/profileSurnameTTI"
+                        app:layout_constraintRight_toRightOf="@+id/profileSurnameTTI"
+                        app:layout_constraintTop_toBottomOf="@+id/profileSurnameTTI"
+                        app:singleLine="true"
+                        app:titleText="@string/profileNameTTITitleText" />
+
+                    <ru.anoadsa.adsaapp.ui.views.TitleTextInputView
+                        android:id="@+id/profileMidnameTTI"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:maxWidth="488dp"
+                        app:autofillHints="personMiddleName"
+                        app:inputHint="@string/profileMidnameTTIInputHint"
+                        app:inputType="textPersonName"
+                        app:layout_constraintLeft_toLeftOf="@+id/profileNameTTI"
+                        app:layout_constraintRight_toRightOf="@+id/profileNameTTI"
+                        app:layout_constraintTop_toBottomOf="@+id/profileNameTTI"
+                        app:singleLine="true"
+                        app:titleText="@string/profileMidnameTTITitleText" />
+
+                    <ru.anoadsa.adsaapp.ui.views.DividerTitleView
+                        android:id="@+id/profileCommunicationMethodsDT"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="36dp"
+                        app:layout_constraintLeft_toLeftOf="@+id/profileMidnameTTI"
+                        app:layout_constraintRight_toRightOf="@+id/profileMidnameTTI"
+                        app:layout_constraintTop_toBottomOf="@+id/profileMidnameTTI"
+                        app:textDTV="@string/profileCommunicationMethodsDTText" />
+
+                    <ru.anoadsa.adsaapp.ui.views.TitleTextInputView
+                        android:id="@+id/profilePhoneTTI"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="36dp"
+                        android:maxWidth="488dp"
+                        app:autofillHints="phoneNumber"
+                        app:inputHint="@string/profilePhoneTTIInputHint"
+                        app:inputType="phone"
+                        app:layout_constraintLeft_toLeftOf="@+id/profileCommunicationMethodsDT"
+                        app:layout_constraintRight_toRightOf="@+id/profileCommunicationMethodsDT"
+                        app:layout_constraintTop_toBottomOf="@+id/profileCommunicationMethodsDT"
+                        app:singleLine="true"
+                        app:titleText="@string/profilePhoneTTITitleText"
+                        app:enabled="false"/>
+
+<!--                    <ru.anoadsa.adsaapp.ui.views.TitleTextInputView-->
+<!--                        android:id="@+id/profileEmailTTI"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="16dp"-->
+<!--                        android:maxWidth="488dp"-->
+<!--                        app:autofillHints="emailAddress"-->
+<!--                        app:inputHint="@string/profileEmailTTIInputHint"-->
+<!--                        app:inputType="textEmailAddress"-->
+<!--                        app:layout_constraintLeft_toLeftOf="@+id/profilePhoneTTI"-->
+<!--                        app:layout_constraintRight_toRightOf="@+id/profilePhoneTTI"-->
+<!--                        app:layout_constraintTop_toBottomOf="@+id/profilePhoneTTI"-->
+<!--                        app:singleLine="true"-->
+<!--                        app:titleText="@string/profileEmailTTITitleText" />-->
+
+                    <ru.anoadsa.adsaapp.ui.views.DividerTitleView
+                        android:id="@+id/profileCarInfoDT"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="36dp"
+                        app:layout_constraintLeft_toLeftOf="@+id/profilePhoneTTI"
+                        app:layout_constraintRight_toRightOf="@+id/profilePhoneTTI"
+                        app:layout_constraintTop_toBottomOf="@+id/profilePhoneTTI"
+                        app:textDTV="@string/profileCarInfoDTText" />
+
+                    <ru.anoadsa.adsaapp.ui.views.TitleTextInputView
+                        android:id="@+id/profileСarBrandTTI"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="36dp"
+                        android:maxWidth="488dp"
+                        app:autofillHints="notApplicable"
+                        app:inputHint="@string/profileCarBrandTTIInputHint"
+                        app:inputType="text"
+                        app:layout_constraintLeft_toLeftOf="@+id/profileCarInfoDT"
+                        app:layout_constraintRight_toRightOf="@+id/profileCarInfoDT"
+                        app:layout_constraintTop_toBottomOf="@+id/profileCarInfoDT"
+                        app:singleLine="true"
+                        app:titleText="@string/profileCarBrandTTITitleText" />
+
+                    <ru.anoadsa.adsaapp.ui.views.TitleTextInputView
+                        android:id="@+id/profileCarNumberTTI"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:maxWidth="488dp"
+                        app:autofillHints="notApplicable"
+                        app:inputHint="@string/profileCarNumberTTIInputHint"
+                        app:inputType="text"
+                        app:layout_constraintLeft_toLeftOf="@+id/profileСarBrandTTI"
+                        app:layout_constraintRight_toRightOf="@+id/profileСarBrandTTI"
+                        app:layout_constraintTop_toBottomOf="@+id/profileСarBrandTTI"
+                        app:singleLine="true"
+                        app:titleText="@string/profileCarNumberTTITitleText" />
+
+                    <ru.anoadsa.adsaapp.ui.views.DividerTitleView
+                        android:id="@+id/profileDocumentsDT"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="36dp"
+                        app:layout_constraintLeft_toLeftOf="@+id/profileCarNumberTTI"
+                        app:layout_constraintRight_toRightOf="@+id/profileCarNumberTTI"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/profileCarNumberTTI"
+                        app:textDTV="@string/profileDocumentsDTText" />
+
+
+                    <ru.anoadsa.adsaapp.ui.views.TitleTextInputView
+                        android:id="@+id/profileOsagoTTI"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="36dp"
+                        android:maxWidth="488dp"
+                        app:autofillHints="notApplicable"
+                        app:inputHint="@string/profileOsagoTTIInputHint"
+                        app:inputType="text"
+
+                        app:layout_constraintLeft_toLeftOf="@+id/profileDocumentsDT"
+                        app:layout_constraintRight_toRightOf="@+id/profileDocumentsDT"
+                        app:layout_constraintTop_toBottomOf="@+id/profileDocumentsDT"
+                        app:singleLine="true"
+                        app:titleText="@string/profileOsagoTTITitleText" />
+
+
+                    <ru.anoadsa.adsaapp.ui.views.TitleTextInputView
+                        android:id="@+id/profileSnilsTTI"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:maxWidth="488dp"
+                        app:autofillHints="notApplicable"
+                        app:inputHint="@string/profileSnilsTTIInputHint"
+                        app:inputType="number"
+                        app:digitsTTIV="1234567890- "
+                        app:layout_constraintLeft_toLeftOf="@+id/profileOsagoTTI"
+                        app:layout_constraintRight_toRightOf="@+id/profileOsagoTTI"
+                        app:layout_constraintTop_toBottomOf="@+id/profileOsagoTTI"
+                        app:singleLine="true"
+                        app:titleText="@string/profileSnilsTTITitleText" />
+
+                    <ru.anoadsa.adsaapp.ui.views.TitleTextInputView
+                        android:id="@+id/profileMedPolisTTI"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:maxWidth="488dp"
+                        app:autofillHints="notApplicable"
+                        app:inputHint="@string/profileMedPolisTTIInputHint"
+                        app:inputType="number"
+                        app:digitsTTIV="1234567890"
+                        app:layout_constraintLeft_toLeftOf="@+id/profileSnilsTTI"
+                        app:layout_constraintRight_toRightOf="@+id/profileSnilsTTI"
+                        app:layout_constraintTop_toBottomOf="@+id/profileSnilsTTI"
+                        app:singleLine="true"
+                        app:titleText="@string/profileMedPolisTTITitleText" />
+
+                    <ru.anoadsa.adsaapp.ui.views.DividerTitleView
+                        android:id="@+id/profileOtherDT"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="36dp"
+                        app:layout_constraintLeft_toLeftOf="@+id/profileMedPolisTTI"
+                        app:layout_constraintRight_toRightOf="@+id/profileMedPolisTTI"
+                        app:layout_constraintTop_toBottomOf="@+id/profileMedPolisTTI"
+                        app:textDTV="@string/profileOtherDTText" />
+
+                    <ru.anoadsa.adsaapp.ui.views.TitleTextInputView
+                        android:id="@+id/profileBirthdayTTI"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="36dp"
+                        android:maxWidth="488dp"
+                        app:autofillHints="birthDateFull"
+                        app:inputHint="@string/profileBirthdayTTIInputHint"
+                        app:inputType="date"
+
+                        app:layout_constraintLeft_toLeftOf="@+id/profileOtherDT"
+                        app:layout_constraintRight_toRightOf="@+id/profileOtherDT"
+                        app:layout_constraintTop_toBottomOf="@+id/profileOtherDT"
+                        app:singleLine="true"
+                        app:titleText="@string/profileBirthdayTTITitleText" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <ru.anoadsa.adsaapp.ui.views.TitleSpinnerView
+                    android:id="@+id/incidentDisabilityCategoryTSV"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:textTSV="Категория инвалидности"
+                    app:layout_constraintTop_toBottomOf="@+id/profileMainConstraintLayout"
+                    android:layout_marginTop="16dp"
+                    />
+
+                <Button
+                    android:id="@+id/incidentSendButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Отправить"
+                    app:layout_constraintTop_toBottomOf="@+id/incidentDisabilityCategoryTSV"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginTop="36dp"
+                    />
+
+<!--                <DatePicker-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:calendarViewShown="false"-->
+<!--                    android:spinnersShown="true"-->
+<!--                    android:datePickerMode="spinners"/>-->
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,7 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_home">
+    app:startDestination="@+id/nav_sos">
+
+    <action
+        android:id="@+id/action_profile"
+        app:destination="@+id/nav_profile"
+        />
 
     <fragment
         android:id="@+id/nav_home"
@@ -22,4 +27,64 @@
         android:name="ru.anoadsa.adsaapp.ui.menufragments.slideshow.SlideshowFragment"
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
+
+    <fragment
+        android:id="@+id/nav_incidents"
+        android:name="ru.anoadsa.adsaapp.ui.menufragments.incidents.IncidentsFragment"
+        android:label="Список обращений"
+        tools:layout="@layout/fragment_incidents">
+
+        <action
+            android:id="@+id/action_incidents_to_incident"
+            app:destination="@+id/nav_incident" />
+
+        <action
+            android:id="@+id/action_incidents_to_chat"
+            app:destination="@+id/nav_chat" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_incident"
+        android:name="ru.anoadsa.adsaapp.ui.menufragments.incident.IncidentFragment"
+        android:label="Обращение"
+        tools:layout="@layout/fragment_incident">
+        <action
+            android:id="@+id/action_incident_to_chat"
+            app:destination="@+id/nav_chat" />
+
+<!--        <action-->
+<!--            android:id="@+id/action_incident_to_video"-->
+<!--            app:destination="@id/nav_video" />-->
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_profile"
+        android:name="ru.anoadsa.adsaapp.ui.menufragments.profile.ProfileFragment"
+        android:label="Профиль пользователя"
+        tools:layout="@layout/fragment_profile" />
+
+    <fragment
+        android:id="@+id/nav_chat"
+        android:name="ru.anoadsa.adsaapp.ui.menufragments.chat.ChatFragment"
+        android:label="Чат по обращению"
+        tools:layout="@layout/fragment_chat" />
+
+    <fragment
+        android:id="@+id/nav_sos"
+        android:name="ru.anoadsa.adsaapp.ui.menufragments.sos.SosFragment"
+        android:label="Экстренные вызовы"
+        tools:layout="@layout/fragment_sos">
+
+        <action
+            android:id="@+id/action_sos_to_incident"
+            app:destination="@id/nav_incident" />
+
+    </fragment>
+
+<!--    <fragment-->
+<!--        android:id="@+id/nav_video"-->
+<!--        android:name="ru.anoadsa.adsaapp.ui.menufragments.video.VideoFragment"-->
+<!--        android:label="Видеовызов"-->
+<!--        tools:layout="@layout/fragment_video" />-->
 </navigation>

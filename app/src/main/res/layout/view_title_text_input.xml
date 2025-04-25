@@ -17,14 +17,15 @@
 <!--            android:layout_width="wrap_content"-->
 <!--            android:layout_height="wrap_content">-->
 
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="titleText"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                />
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+
+        />
 
     <EditText
         android:id="@+id/editText"
@@ -32,12 +33,12 @@
         android:layout_height="wrap_content"
         android:autofillHints="notApplicable"
 
-        android:hint="inputHint"
+        android:hint=""
         android:enabled="true"
         android:inputType="text"
         android:maxWidth="488dp"
         android:minHeight="48dp"
-        android:text="inputText"
+        android:text=""
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="@+id/textView"
         app:layout_constraintRight_toRightOf="parent"

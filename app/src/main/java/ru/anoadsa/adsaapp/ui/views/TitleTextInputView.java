@@ -3,12 +3,15 @@ package ru.anoadsa.adsaapp.ui.views;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.os.Build;
+import android.text.Editable;
+import android.text.InputFilter;
+import android.text.TextWatcher;
+import android.text.method.DigitsKeyListener;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.autofill.AutofillValue;
 import android.widget.EditText;
-import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -17,6 +20,8 @@ import androidx.annotation.RequiresApi;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import java.util.Date;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import ru.anoadsa.adsaapp.R;
 import ru.anoadsa.adsaapp.Static;
@@ -29,9 +34,21 @@ public class TitleTextInputView extends ConstraintLayout {
     private String inputType;
     private boolean singleLine;
     private boolean enabled;
+    private int minLines;
+    private String digits;
+    private String listenerType;
+
+    private DigitsKeyListener listener;
+
+    private InputFilter inputFilter;
 
     private TextView textView;
     private EditText editText;
+
+    private OnFocusChangeListener onFocusChangeListener;
+
+    private TextWatcher textWatcher;
+    private boolean doOnTextChangedEnabled;
 
     public TitleTextInputView(Context context) {
         this(context, null);
@@ -54,6 +71,8 @@ public class TitleTextInputView extends ConstraintLayout {
             inputType = a.getString(R.styleable.TitleTextInputView_inputType);
             singleLine = a.getBoolean(R.styleable.TitleTextInputView_singleLine, true);
             enabled = a.getBoolean(R.styleable.TitleTextInputView_enabled, true);
+            minLines = a.getInteger(R.styleable.TitleTextInputView_minLines, 1);
+            digits = a.getString(R.styleable.TitleTextInputView_digitsTTIV);
         } finally {
             a.recycle();
         }
@@ -62,6 +81,14 @@ public class TitleTextInputView extends ConstraintLayout {
 
         textView = findViewById(R.id.textView);
         editText = findViewById(R.id.editText);
+        textView.setId(View.generateViewId());
+        editText.setId(View.generateViewId());
+
+        LayoutParams lp = (LayoutParams) editText.getLayoutParams();
+        lp.leftToLeft = textView.getId();
+        lp.topToBottom = textView.getId();
+        editText.setLayoutParams(lp);
+
         textView.setText(titleText);
         editText.setText(inputText);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -71,13 +98,120 @@ public class TitleTextInputView extends ConstraintLayout {
         editText.setInputType(Static.inputTypeStringConverter(inputType));
         editText.setSingleLine(singleLine);
         editText.setEnabled(enabled);
+        if (!singleLine) {
+            editText.setMinLines(minLines);
+        } else {
+            editText.setMaxLines(1);
+        }
+
+        if (digits != null) {
+            editText.setKeyListener(DigitsKeyListener.getInstance(digits));
+        }
+//        if (digits != null) {
+//            switch (listenerType) {
+//                case "text":
+//                    listener = TextKeyListener.getInstance();
+//            }
+//        }
+
+    }
+
+    public static View.OnFocusChangeListener doOnTextChangedOnlyIfHasFocus = new View.OnFocusChangeListener() {
+        @Override
+        public void onFocusChange(@NonNull View view, boolean hasFocus) {
+            //                    incidentOrganisationTSV.setEnabledTSV(false);
+            //                    searchOrganisations();
+            TitleTextInputView tti = (TitleTextInputView) view.getParent().getParent();
+            if (tti.isTTIEnabled()) {
+                tti.setDoOnTextChangedEnabled(hasFocus);
+            }
+        }
+    };
+
+    public void setDoOnTextChangedEnabled(boolean enabled) {
+        this.doOnTextChangedEnabled = enabled;
+    }
+
+    public void doOnTextChanged(Runnable taskOnChange, long delay, Runnable taskAfterDelay) {
+        doOnTextChangedEnabled = true;
+        setOnTextChangedListener(new TextWatcher() {
+//            private boolean isTyping = false;
+            private Timer timer = new Timer();
+//            private long delay = inputDelay;
+
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+//                if (!isTyping) {
+//                    isTyping = true;
+//                }
+                if (doOnTextChangedEnabled) {
+                    if (taskOnChange != null) {
+                        taskOnChange.run();
+                    }
+                    if (taskAfterDelay != null) {
+                        timer.cancel();
+                        timer = new Timer();
+    //                timer.schedule(task, inputDelay);
+                        timer.schedule(new TimerTask() {
+                            @Override
+                            public void run() {
+                                taskAfterDelay.run();
+                            }
+                        }, delay);
+                    }
+                }
+            }
+        });
+    }
+
+    public void setOnTextChangedListener(TextWatcher textWatcher) {
+        editText.removeTextChangedListener(this.textWatcher);
+        this.textWatcher = textWatcher;
+        editText.addTextChangedListener(textWatcher);
+        invalidate();
+        requestLayout();
+    }
+
+    public void setOnFocusChangeListenerTTI(OnFocusChangeListener onFocusChangeListener) {
+        this.onFocusChangeListener = onFocusChangeListener;
+        editText.setOnFocusChangeListener(onFocusChangeListener);
+        invalidate();
+        requestLayout();
+    }
+
+    public void setInputFilter(InputFilter inputFilter) {
+        this.inputFilter = inputFilter;
+        editText.setFilters(new InputFilter[]{inputFilter});
+        invalidate();
+        requestLayout();
+    }
+
+    public int getMinLines() {
+        return minLines;
+    }
+
+    public void setMinLines(int minLines) {
+        this.minLines = minLines;
+        editText.setMinLines(minLines);
+        invalidate();
+        requestLayout();
     }
 
     //https://stackoverflow.com/questions/47863889/autofill-for-credit-card-expiry-date-how-to-use-4-digit-year
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public int getAutofillType() {
-        if (inputType.contains("date")) {
+        if (inputType != null && inputType.contains("date")) {
             return AUTOFILL_TYPE_DATE;
         }
         return editText.getAutofillType();
@@ -88,7 +222,7 @@ public class TitleTextInputView extends ConstraintLayout {
     @Nullable
     @Override
     public AutofillValue getAutofillValue() {
-        if (inputType.contains("date")) {
+        if (inputType != null && inputType.contains("date")) {
             AutofillValue autofillValue = super.getAutofillValue();
             if (autofillValue == null) {
                 return null;
@@ -103,7 +237,7 @@ public class TitleTextInputView extends ConstraintLayout {
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void autofill(@NonNull AutofillValue value) {
-        if (inputType.contains("date")) {
+        if (inputType != null && inputType.contains("date")) {
             if (!value.isDate()) {
 //            Timber.w(value + " could not be autofilled into " + this);
                 return;

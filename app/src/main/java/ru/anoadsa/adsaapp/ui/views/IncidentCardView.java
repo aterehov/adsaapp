@@ -4,10 +4,13 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
+
+import com.google.android.material.button.MaterialButton;
 
 import ru.anoadsa.adsaapp.R;
 
@@ -28,6 +31,39 @@ public class IncidentCardView extends ConstraintLayout {
     private TextView statusValue;
     private TextView operatorValue;
     private TextView operatorLabel;
+
+    private MaterialButton chatButton;
+    private int defaultIconPadding;
+
+    public void setAll(String docnum, String datetime, String abonent, String client,
+                       String address, String status, String operator) {
+        this.docnum = docnum;
+        this.datetime = datetime;
+        this.abonent = abonent;
+        this.client = client;
+        this.address = address;
+        this.status = status;
+        this.operator = operator;
+
+        docnumValue.setText(docnum);
+        datetimeTextView.setText(datetime);
+        abonentValue.setText(abonent);
+        clientValue.setText(client);
+        addressValue.setText(address);
+        statusValue.setText(status);
+        operatorValue.setText(operator);
+
+        if (operator == null || operator.isEmpty()) {
+            operatorValue.setVisibility(GONE);
+            operatorLabel.setVisibility(GONE);
+        } else {
+            operatorValue.setVisibility(VISIBLE);
+            operatorLabel.setVisibility(VISIBLE);
+        }
+
+        invalidate();
+        requestLayout();
+    }
 
     public IncidentCardView(Context context) {
         this(context, null);
@@ -66,6 +102,8 @@ public class IncidentCardView extends ConstraintLayout {
 
         operatorLabel = findViewById(R.id.operatorLabel);
 
+        chatButton = findViewById(R.id.chatButton);
+
         docnumValue.setText(docnum);
         datetimeTextView.setText(datetime);
         abonentValue.setText(abonent);
@@ -78,6 +116,25 @@ public class IncidentCardView extends ConstraintLayout {
             operatorValue.setVisibility(GONE);
             operatorLabel.setVisibility(GONE);
         }
+
+        defaultIconPadding = chatButton.getIconPadding();
+        setNewMessagesCount(0);
+    }
+
+    public void setNewMessagesCount(int count) {
+        if (count == 0) {
+            chatButton.setText("");
+            chatButton.setIconPadding(0);
+        } else {
+            chatButton.setText(String.valueOf(count));
+            chatButton.setIconPadding(defaultIconPadding);
+        }
+        invalidate();
+        requestLayout();
+    }
+
+    public void setChatButtonOnClickListener(OnClickListener l) {
+        chatButton.setOnClickListener(l);
     }
 
     public String getDocnum() {

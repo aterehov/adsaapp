@@ -17,6 +17,9 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class Net {
+    public static final String ADSA_SERVER = "https://dev.anoadsa.ru:9900";
+    public static final String OSM_NOMINATIM = "https://nominatim.openstreetmap.org";
+
     private static final OkHttpClient client = new OkHttpClient();
     private static final MediaType MEDIA_TYPE_JSON =
             MediaType.parse("application/json; charset=utf-8");
@@ -34,7 +37,7 @@ public class Net {
     @NonNull
     private static Request formRequest(
             @NonNull String url, @NonNull String method, @Nullable Map<String, String> headers,
-            @Nullable Map<String, String> queries, @Nullable String body) {
+            @Nullable Map<String, String> queries, @Nullable RequestBody body) {
         HttpUrl.Builder queried_url = Objects.requireNonNull(HttpUrl.parse(url)).newBuilder();
         if (queries != null) {
             for (String key : queries.keySet()) {
@@ -44,7 +47,11 @@ public class Net {
 
         Request.Builder request = new Request.Builder()
                 .url(queried_url.build())
-                .method(method, RequestBody.create(body == null ? "" : body, MEDIA_TYPE_JSON));
+                .method(
+                        method,
+//                        RequestBody.create(body == null ? "" : body, MEDIA_TYPE_JSON)
+                        body
+                );
         if (headers != null) {
             for (String key : headers.keySet()) {
                 if (headers.get(key) != null) {
@@ -56,19 +63,28 @@ public class Net {
             }
         }
 
+        request.addHeader(
+                "User-Agent",
+                DevSettings.APP_NAME
+                        + "/"
+                        + DevSettings.APP_VERSION
+                        + " "
+                        + System.getProperty("http.agent")
+        );
+
         return request.build();
     }
 
     @NonNull
     public static Response request(
             @NonNull String url, @NonNull String method, @Nullable Map<String, String> headers,
-            @Nullable Map<String, String> queries, @Nullable String body) throws IOException {
+            @Nullable Map<String, String> queries, @Nullable RequestBody body) throws IOException {
         return client.newCall(formRequest(url, method, headers, queries, body)).execute();
     }
 
     public static void requestAsync(
             @NonNull String url, @NonNull String method, @Nullable Map<String, String> headers,
-            @Nullable Map<String, String> queries, @Nullable String body,
+            @Nullable Map<String, String> queries, @Nullable RequestBody body,
             @NonNull IOnResponse _onResponse, @Nullable IOnFailure _onFailure) {
         client.newCall(formRequest(url, method, headers, queries, body)).enqueue(new Callback() {
             @Override

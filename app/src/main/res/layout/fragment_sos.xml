@@ -1,15 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:clipChildren="false">
+
+    <ru.anoadsa.adsaapp.ui.views.FixedDonutProgress
+
+        android:id="@+id/sosProgress"
+        android:layout_width="340dp"
+        android:layout_height="340dp"
+        android:layout_marginStart="-20dp"
+        android:layout_marginTop="-20dp"
+        app:donut_circle_starting_degree="270"
+        app:donut_clockWise="true"
+        app:donut_finished_stroke_width="15dp"
+        app:donut_progress="0"
+        app:donut_background_color="@color/transparent"
+        app:donut_show_text="false"
+        app:donut_unfinished_color="@color/transparent"
+        app:layout_constraintStart_toStartOf="@+id/sosButton"
+        app:layout_constraintTop_toTopOf="@+id/sosButton" />
+
+<!--    <com.github.lzyzsd.circleprogress.DonutProgress-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:donut-->
+<!--        app:donut_finished_stroke_width="10dp"-->
+<!--        app:donut_progress="20"-->
+<!--        app:donut_unfinished_color="@color/transparent"-->
+
 
     <Button
         android:id="@+id/sosButton"
         android:layout_width="300dp"
         android:layout_height="300dp"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
         android:text="@string/sosButtonText"
+
         android:textAppearance="@style/TextAppearance.AppCompat.Display3"
         app:cornerRadius="300dp"
         app:layout_constraintBottom_toTopOf="@+id/sosVideocallButton"
@@ -17,15 +48,62 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/sosText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:text="Экстренный вызов по телефону 112 с отправкой SMS с местоположением и данными профиля"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="@+id/sosButton"
+        app:layout_constraintStart_toStartOf="@+id/sosButton"
+        app:layout_constraintTop_toBottomOf="@+id/sosButton" />
+
+
+    <ru.anoadsa.adsaapp.ui.views.FixedDonutProgress
+
+        android:id="@+id/sosVideoProgress"
+        android:layout_width="128dp"
+        android:layout_height="128dp"
+        android:layout_marginStart="-14dp"
+        android:layout_marginTop="-14dp"
+        app:donut_circle_starting_degree="270"
+        app:donut_clockWise="true"
+        app:donut_finished_stroke_width="10dp"
+        app:donut_progress="0"
+        app:donut_background_color="@color/transparent"
+        app:donut_show_text="false"
+        app:donut_unfinished_color="@color/transparent"
+        app:layout_constraintStart_toStartOf="@+id/sosVideocallButton"
+        app:layout_constraintTop_toTopOf="@+id/sosVideocallButton" />
+
     <Button
         android:id="@+id/sosVideocallButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/sosVideocallButtonText"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        android:text=""
+        android:visibility="visible"
+        app:cornerRadius="100dp"
+        app:icon="@drawable/baseline_emergency_recording_24"
+        app:iconGravity="textStart"
+        app:iconPadding="0dp"
+        app:iconSize="50dp"
         app:layout_constraintBottom_toTopOf="@+id/sosNewIncidentButton"
         app:layout_constraintEnd_toEndOf="@+id/sosButton"
         app:layout_constraintStart_toStartOf="@+id/sosButton"
         app:layout_constraintTop_toBottomOf="@+id/sosButton" />
+
+    <TextView
+        android:id="@+id/sosVideocallText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Видеовызов с оператором АДСА"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="@+id/sosVideocallButton"
+        app:layout_constraintStart_toStartOf="@+id/sosVideocallButton"
+        app:layout_constraintTop_toBottomOf="@+id/sosVideocallButton" />
 
     <Button
         android:id="@+id/sosNewIncidentButton"

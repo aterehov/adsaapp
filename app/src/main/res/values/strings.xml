@@ -49,7 +49,7 @@
     <string name="loginActivityName">Вход в систему</string>
     <string name="restoreAccessActivityName">Восстановить доступ</string>
     <string name="smsCodeActivityName">Ввод кода из SMS</string>
-    <string name="registrationInputSurnameHint">Фамилия</string>
+    <string name="registrationInputSurnameHint">Фамилия*</string>
     <string name="registrationInputNameHint">Имя</string>
     <string name="registrationInputPatronymicHint">Отчество</string>
     <string name="registrationInputEmailHint">Электронная почта</string>
@@ -91,4 +91,5 @@
     <string name="sosButtonText">SOS</string>
     <string name="sosVideocallButtonText">Видеовызов</string>
     <string name="sosNewIncidentButtonText">Создать обращение</string>
+    <string name="incidentNominatimMentionText"><u>Сервис конвертации между адресом и координатами предоставлен OpenStreetMap Nominatim</u></string>
 </resources>

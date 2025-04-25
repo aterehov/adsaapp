@@ -29,7 +29,7 @@ public class DividerTitleView extends ConstraintLayout {
         );
 
         try {
-            text = a.getString(R.styleable.DividerTitleView_text);
+            text = a.getString(R.styleable.DividerTitleView_textDTV);
         } finally {
             a.recycle();
         }

@@ -20,7 +20,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="titleText"
+        android:text=""
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:layout_marginTop="4dp"/>
 

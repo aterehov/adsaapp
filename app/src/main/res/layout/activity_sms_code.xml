@@ -5,9 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/smsCodeMainConstraintLayout"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -15,119 +13,129 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-<!--        <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--            android:id="@+id/smsCodePhoneConstraintLayout"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="36dp"-->
-<!--            app:layout_constraintEnd_toEndOf="@+id/smsCodeLabel"-->
-<!--            app:layout_constraintStart_toStartOf="@+id/smsCodeLabel"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/smsCodeLabel">-->
-
-<!--            <EditText-->
-<!--                android:id="@+id/smsCodeInputPhone"-->
-<!--                style="@style/Widget.AppCompat.EditText"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:autofillHints="phone"-->
-<!--                android:ems="10"-->
-<!--                android:hint="@string/smsCodeInputPhoneHint"-->
-<!--                android:inputType="phone"-->
-<!--                android:minHeight="48dp"-->
-<!--                android:singleLine="true"-->
-<!--                app:layout_constraintLeft_toLeftOf="parent"-->
-<!--                app:layout_constraintRight_toRightOf="parent"-->
-<!--                app:layout_constraintTop_toTopOf="parent" />-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/smsCodeInputPhoneHint"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="@string/smsCodeInputPhoneHintText"-->
-<!--                app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                app:layout_constraintLeft_toLeftOf="@id/smsCodeInputPhone"-->
-<!--                app:layout_constraintTop_toBottomOf="@id/smsCodeInputPhone" />-->
-
-<!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
-
-        <TextView
-            android:id="@+id/smsCodeLabel"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/smsCodeMainConstraintLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/smsCodeLabelText"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            >
 
-        <EditText
-            android:id="@+id/smsCodeInputCode"
-            style="@style/Widget.AppCompat.EditText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="36dp"
-            android:autofillHints="smsOTPCode"
-            android:ems="10"
-            android:hint="@string/smsCodeInputCodeHint"
-            android:inputType="numberPassword"
-            android:minHeight="48dp"
-            android:singleLine="true"
-            app:layout_constraintEnd_toEndOf="@+id/smsCodeLabel"
-            app:layout_constraintStart_toStartOf="@+id/smsCodeLabel"
-            app:layout_constraintTop_toBottomOf="@+id/smsCodeLabel" />
+            <!--        <androidx.constraintlayout.widget.ConstraintLayout-->
+            <!--            android:id="@+id/smsCodePhoneConstraintLayout"-->
+            <!--            android:layout_width="wrap_content"-->
+            <!--            android:layout_height="wrap_content"-->
+            <!--            android:layout_marginTop="36dp"-->
+            <!--            app:layout_constraintEnd_toEndOf="@+id/smsCodeLabel"-->
+            <!--            app:layout_constraintStart_toStartOf="@+id/smsCodeLabel"-->
+            <!--            app:layout_constraintTop_toBottomOf="@+id/smsCodeLabel">-->
 
-<!--        <EditText-->
-<!--            android:id="@+id/smsCodeInputPassword2"-->
-<!--            style="@style/Widget.AppCompat.EditText"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="16dp"-->
-<!--            android:autofillHints="newPassword"-->
-<!--            android:ems="10"-->
-<!--            android:hint="@string/smsCodeInputPassword2Hint"-->
-<!--            android:inputType="textPassword"-->
-<!--            android:minHeight="48dp"-->
-<!--            android:singleLine="true"-->
-<!--            app:layout_constraintEnd_toEndOf="@+id/smsCodeInputCode"-->
-<!--            app:layout_constraintStart_toStartOf="@+id/smsCodeInputCode"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/smsCodeInputCode" />-->
+            <!--            <EditText-->
+            <!--                android:id="@+id/smsCodeInputPhone"-->
+            <!--                style="@style/Widget.AppCompat.EditText"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:autofillHints="phone"-->
+            <!--                android:ems="10"-->
+            <!--                android:hint="@string/smsCodeInputPhoneHint"-->
+            <!--                android:inputType="phone"-->
+            <!--                android:minHeight="48dp"-->
+            <!--                android:singleLine="true"-->
+            <!--                app:layout_constraintLeft_toLeftOf="parent"-->
+            <!--                app:layout_constraintRight_toRightOf="parent"-->
+            <!--                app:layout_constraintTop_toTopOf="parent" />-->
 
-        <Button
-            android:id="@+id/smsCodeButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/smsCodeButtonText"
+            <!--            <TextView-->
+            <!--                android:id="@+id/smsCodeInputPhoneHint"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:text="@string/smsCodeInputPhoneHintText"-->
+            <!--                app:layout_constraintBottom_toBottomOf="parent"-->
+            <!--                app:layout_constraintLeft_toLeftOf="@id/smsCodeInputPhone"-->
+            <!--                app:layout_constraintTop_toBottomOf="@id/smsCodeInputPhone" />-->
 
-            app:layout_constraintEnd_toEndOf="@+id/smsCodeInputCode"
-            app:layout_constraintStart_toStartOf="@+id/smsCodeInputCode"
-            app:layout_constraintTop_toBottomOf="@+id/smsCodeInputCode" />
+            <!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
 
-        <Button
-            android:id="@+id/smsCodeResendButton"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/smsCodeResendButtonText"
+            <TextView
+                android:id="@+id/smsCodeLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/smsCodeLabelText"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-            app:layout_constraintEnd_toEndOf="@+id/smsCodeButton"
-            app:layout_constraintStart_toStartOf="@+id/smsCodeButton"
-            app:layout_constraintTop_toBottomOf="@+id/smsCodeButton" />
+            <EditText
+                android:id="@+id/smsCodeInputCode"
+                style="@style/Widget.AppCompat.EditText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="36dp"
+                android:autofillHints="smsOTPCode"
+                android:ems="10"
+                android:hint="@string/smsCodeInputCodeHint"
+                android:inputType="numberPassword"
+                android:minHeight="48dp"
+                android:singleLine="true"
+                app:layout_constraintEnd_toEndOf="@+id/smsCodeLabel"
+                app:layout_constraintStart_toStartOf="@+id/smsCodeLabel"
+                app:layout_constraintTop_toBottomOf="@+id/smsCodeLabel" />
 
-        <Button
-            android:id="@+id/smsCodeBackButton"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/smsCodeBackButtonText"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/smsCodeResendButton"
-            app:layout_constraintStart_toStartOf="@+id/smsCodeResendButton"
-            app:layout_constraintTop_toBottomOf="@+id/smsCodeResendButton" />
+            <!--        <EditText-->
+            <!--            android:id="@+id/smsCodeInputPassword2"-->
+            <!--            style="@style/Widget.AppCompat.EditText"-->
+            <!--            android:layout_width="wrap_content"-->
+            <!--            android:layout_height="wrap_content"-->
+            <!--            android:layout_marginTop="16dp"-->
+            <!--            android:autofillHints="newPassword"-->
+            <!--            android:ems="10"-->
+            <!--            android:hint="@string/smsCodeInputPassword2Hint"-->
+            <!--            android:inputType="textPassword"-->
+            <!--            android:minHeight="48dp"-->
+            <!--            android:singleLine="true"-->
+            <!--            app:layout_constraintEnd_toEndOf="@+id/smsCodeInputCode"-->
+            <!--            app:layout_constraintStart_toStartOf="@+id/smsCodeInputCode"-->
+            <!--            app:layout_constraintTop_toBottomOf="@+id/smsCodeInputCode" />-->
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <Button
+                android:id="@+id/smsCodeButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/smsCodeButtonText"
+
+                app:layout_constraintEnd_toEndOf="@+id/smsCodeInputCode"
+                app:layout_constraintStart_toStartOf="@+id/smsCodeInputCode"
+                app:layout_constraintTop_toBottomOf="@+id/smsCodeInputCode" />
+            <!--TODO make scrollable-->
+            <Button
+                android:id="@+id/smsCodeResendButton"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/smsCodeResendButtonText"
+
+                app:layout_constraintEnd_toEndOf="@+id/smsCodeButton"
+                app:layout_constraintStart_toStartOf="@+id/smsCodeButton"
+                app:layout_constraintTop_toBottomOf="@+id/smsCodeButton" />
+
+            <Button
+                android:id="@+id/smsCodeBackButton"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/smsCodeBackButtonText"
+                android:layout_marginBottom="72dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/smsCodeResendButton"
+                app:layout_constraintStart_toStartOf="@+id/smsCodeResendButton"
+                app:layout_constraintTop_toBottomOf="@+id/smsCodeResendButton" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

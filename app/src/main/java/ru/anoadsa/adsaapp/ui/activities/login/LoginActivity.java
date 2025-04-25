@@ -16,16 +16,22 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.lifecycle.Observer;
+
+import com.google.android.material.snackbar.Snackbar;
 
 import org.jetbrains.annotations.Contract;
+
+import java.util.Objects;
 
 import ru.anoadsa.adsaapp.R;
 import ru.anoadsa.adsaapp.ui.EmptyViewModel;
 import ru.anoadsa.adsaapp.ui.abstracts.UiActivity;
+import ru.anoadsa.adsaapp.ui.activities.menu.MenuActivity;
 import ru.anoadsa.adsaapp.ui.activities.registration.RegistrationActivity;
 import ru.anoadsa.adsaapp.ui.activities.restoreaccess.RestoreAccessActivity;
 
-public class LoginActivity extends UiActivity<EmptyViewModel> {
+public class LoginActivity extends UiActivity<LoginViewModel> {
     private ConstraintLayout mainConstraintLayout;
     private ConstraintLayout phoneConstraintLayout;
     private EditText inputPhone;
@@ -35,6 +41,7 @@ public class LoginActivity extends UiActivity<EmptyViewModel> {
     private Button button;
     private Button restoreAccessButton;
     private Button registerButton;
+    private Snackbar errorSnackbar;
 
     private ActivityResultLauncher<Object> registrationActivityLauncher;
 
@@ -75,13 +82,6 @@ public class LoginActivity extends UiActivity<EmptyViewModel> {
         }
     };
 
-    private View.OnClickListener buttonOnClickListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            //TODO login actions
-        }
-    };
-
     private OnBackPressedCallback onBackPressedCallback = new OnBackPressedCallback(true) {
         @Override
         public void handleOnBackPressed() {
@@ -112,7 +112,69 @@ public class LoginActivity extends UiActivity<EmptyViewModel> {
     protected void configureUiActions() {
         registerButton.setOnClickListener(registerButtonOnClickListener);
         restoreAccessButton.setOnClickListener(restoreAccessButtonOnClickListener);
-        button.setOnClickListener(buttonOnClickListener);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //TODO login actions
+                button.setEnabled(false);
+                viewModel.login(
+                        inputPhone.getText().toString(),
+                        inputPassword.getText().toString()
+                );
+            }
+        });
+
+
+    }
+
+    @Override
+    protected void configureViewModelActions() {
+        viewModel.getLoginSuccessful().observe(this, new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean loginSuccessful) {
+                if (loginSuccessful != null && loginSuccessful) {
+                    if (errorSnackbar != null) {
+                        errorSnackbar.dismiss();
+                    }
+//                    loggedInAction();
+                    viewModel.clearIncidents();
+                    viewModel.loadUserDataFromServer();
+//                    finish();
+                } else {
+                    button.setEnabled(true);
+                }
+            }
+        });
+
+        viewModel.getLoginErrorMessage().observe(this, new Observer<String>() {
+            @Override
+            public void onChanged(String message) {
+                if (message != null) {
+                    errorSnackbar = Snackbar.make(
+//                            Objects.requireNonNull(getCurrentFocus()),
+                            mainConstraintLayout,
+                            message,
+                            Snackbar.LENGTH_INDEFINITE
+                    );
+                    errorSnackbar.show();
+                } else if (errorSnackbar != null) {
+                    errorSnackbar.dismiss();
+                }
+            }
+        });
+
+        viewModel.getUserLoadedFromServer().observe(this, new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean loaded) {
+                if (loaded) {
+                    finish();
+                }
+            }
+        });
+    }
+
+    private void loggedInAction() {
+        startActivity(new Intent(this, MenuActivity.class));;
     }
 
     private void configureBackButtonAction() {
@@ -125,6 +187,7 @@ public class LoginActivity extends UiActivity<EmptyViewModel> {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setViewModel(LoginViewModel.class);
         configureActivityLaunchers();
         super.onCreate(savedInstanceState);
         configureBackButtonAction();

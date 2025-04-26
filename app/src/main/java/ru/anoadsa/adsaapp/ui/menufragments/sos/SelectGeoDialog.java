@@ -3,7 +3,10 @@ package ru.anoadsa.adsaapp.ui.menufragments.sos;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -136,6 +139,15 @@ public class SelectGeoDialog extends DialogFragment {
         latTTI.setDoOnTextChangedEnabled(false);
         lonTTI.setDoOnTextChangedEnabled(false);
         addrTTI.setDoOnTextChangedEnabled(false);
+
+        nominatimText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(Intent.ACTION_VIEW,
+                        Uri.parse("https://www.openstreetmap.org/copyright")
+                ));
+            }
+        });
 
 
         viewModel.getLatitude().observe(

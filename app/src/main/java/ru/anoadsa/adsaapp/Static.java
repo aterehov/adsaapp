@@ -616,6 +616,9 @@ public class Static {
         return db.userDao().getUser().concatMap(new Function<User, Single<Map<String, String>>>() {
             @Override
             public Single<Map<String, String>> apply(User user) throws Throwable {
+                if (user == null || user.getPhone() == null || user.getPassword() == null) {
+                    return Single.just(Collections.singletonMap("Authorization", ""));
+                }
                 HashMap<String, String> h = new HashMap<String, String>();
                 h.put("Authorization", user.getAuthToken());
                 Single<Map<String, String>> r = Single.just(h);

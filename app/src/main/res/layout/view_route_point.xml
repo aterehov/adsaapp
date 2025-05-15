@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/incidentLocationCoordinatesCL"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/upButton"
+        app:layout_constraintEnd_toStartOf="@+id/locationButton"
+        app:layout_constraintTop_toTopOf="parent"
+        >
+
+        <ru.anoadsa.adsaapp.ui.views.TitleTextInputView
+            android:id="@+id/incidentLocationLatitudeTTIV"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:titleText="Широта*"
+            app:inputHint="Широта*"
+            app:inputType="numberDecimal|numberSigned"
+            app:singleLine="true"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/incidentLocationLongitudeTTIV"
+            />
+
+        <ru.anoadsa.adsaapp.ui.views.TitleTextInputView
+            android:id="@+id/incidentLocationLongitudeTTIV"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:titleText="Долгота*"
+            app:inputHint="Долгота*"
+            app:inputType="numberDecimal|numberSigned"
+            app:singleLine="true"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/incidentLocationLatitudeTTIV"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ru.anoadsa.adsaapp.ui.views.TitleTextInputView
+        android:id="@+id/incidentLocationAddressTTIV"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:titleText="Адрес*"
+        app:inputHint="Адрес*"
+        app:inputType="textPostalAddress"
+        app:autofillHints="postalAddress"
+        app:singleLine="false"
+        app:layout_constraintTop_toBottomOf="@+id/incidentLocationCoordinatesCL"
+        app:layout_constraintStart_toStartOf="@+id/incidentLocationCoordinatesCL"
+        app:layout_constraintEnd_toEndOf="@+id/incidentLocationCoordinatesCL"
+        android:layout_marginTop="0dp"
+        />
+
+    <Button
+        android:id="@+id/locationButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        app:layout_constraintTop_toTopOf="parent"
+        app:icon="@drawable/baseline_my_location_24"
+        app:iconGravity="textStart"
+        app:iconPadding="0dp"
+        android:minWidth="0dp"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <Button
+        android:id="@+id/mapButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        app:layout_constraintTop_toBottomOf="@+id/locationButton"
+        app:icon="@drawable/baseline_map_24"
+        app:iconGravity="textStart"
+        app:iconPadding="0dp"
+        android:minWidth="0dp"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <Button
+        android:id="@+id/deleteButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        app:layout_constraintTop_toBottomOf="@+id/mapButton"
+        app:icon="@drawable/baseline_delete_24"
+        app:iconGravity="textStart"
+        app:iconPadding="0dp"
+        android:minWidth="0dp"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <Button
+        android:id="@+id/upButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        app:layout_constraintTop_toTopOf="parent"
+        app:icon="@drawable/baseline_arrow_upward_24"
+        app:iconGravity="textStart"
+        app:iconPadding="0dp"
+        android:minWidth="0dp"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+    <Button
+        android:id="@+id/downButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:icon="@drawable/baseline_arrow_downward_24"
+        app:iconGravity="textStart"
+        app:iconPadding="0dp"
+        android:minWidth="0dp"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintTop_toBottomOf="@+id/upButton"
+        app:layout_constraintBottom_toTopOf="@+id/downButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/upButton"
+        />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

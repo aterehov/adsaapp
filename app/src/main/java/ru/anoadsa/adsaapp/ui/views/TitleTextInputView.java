@@ -166,6 +166,7 @@ public class TitleTextInputView extends ConstraintLayout {
                             @Override
                             public void run() {
                                 taskAfterDelay.run();
+//                                return false;
                             }
                         }, delay);
                     }

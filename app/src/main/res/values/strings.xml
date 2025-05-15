@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ANO ADSA App</string>
+    <string name="app_name">АДСА</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
@@ -92,4 +92,5 @@
     <string name="sosVideocallButtonText">Видеовызов</string>
     <string name="sosNewIncidentButtonText">Создать обращение</string>
     <string name="incidentNominatimMentionText"><u>Сервис конвертации между адресом и координатами предоставлен OpenStreetMap Nominatim</u></string>
+    <string name="OSMMentionText"><u>OpenStreetMap</u></string>
 </resources>

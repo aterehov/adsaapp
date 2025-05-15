@@ -593,6 +593,7 @@ public class CheckMessageCountWorker extends Worker {
 
         OneTimeWorkRequest nextWorkRequest = nwrBuilder.build();
 
+        System.out.println("!!!!! SCHEDULING WORKER !!!!!");
         WorkManager.getInstance(context.getApplicationContext()).enqueueUniqueWork(
                 "checkMessageCountWorker",
                 ExistingWorkPolicy.REPLACE,

@@ -22,6 +22,7 @@ import android.util.Pair;
 import android.util.TypedValue;
 
 import androidx.activity.result.contract.ActivityResultContract;
+import androidx.annotation.Keep;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
@@ -66,11 +67,27 @@ import io.reactivex.rxjava3.functions.Function;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
+import ru.anoadsa.adsaapp.backgroundtasks.checkmessagecount.CheckMessageCountWatchdog;
+import ru.anoadsa.adsaapp.backgroundtasks.sosbutton.SosButtonWorker;
 import ru.anoadsa.adsaapp.models.data.User;
 import ru.anoadsa.adsaapp.models.databases.AppDatabase;
 import ru.anoadsa.adsaapp.ui.activities.permission.PermissionActivity;
+import ru.anoadsa.adsaapp.ui.views.ChatMessageView;
 
 public class Static {
+//    @Keep
+//    public interface ColorCompat {
+//        public int getColor(int id);
+//    }
+//
+//    private static class ColorCompatAdapter {
+//        private
+//
+//        public ColorCompatAdapter(Context context) {
+//
+//        }
+//    }
+
     public static String LETTERS_RUSSIAN_LOWER = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
     public static String LETTERS_RUSSIAN_UPPER = "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ";
     public static DateFormat dateFormat = DateFormat.getDateInstance();
@@ -80,9 +97,76 @@ public class Static {
     public static String ADSA_DOCUMENTS_FOLDER = "Документы АНО АДСА";
 
     public static String CHAT_NOTIFICATION_CHANNEL_ID = "ChatNotifications";
+    public static String wordsAllowedChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZабвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ0123456789-";
 
     public static Executor executor;
     public static HandlerThread handlerThread;
+
+    private static boolean appStarted;
+
+    public static void runOnStart(Context appContext) {
+        if (appStarted) {
+            return;
+        }
+
+        try {
+            DevSettings.loadAppVersion(appContext);
+            DevSettings.loadAppVersionCode(appContext);
+        } catch (PackageManager.NameNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
+        Static.initDb(appContext);
+        AppPreferences.initDataStore(appContext);
+        Geo.initAutoselectBetterLocation();
+
+        SosButtonWorker.subscribeOnLocationUpdates();
+        CheckMessageCountWatchdog.schedule(appContext);
+
+        appStarted = true;
+    }
+
+    @NonNull
+    public static ArrayList<String> stringToWords(@NonNull String text) {
+        String splitChars = "";
+
+        for (char c: text.toCharArray()) {
+            if (wordsAllowedChars.indexOf(c) == -1 && splitChars.indexOf(c) == -1) {
+                splitChars += c;
+            }
+        }
+        ArrayList<String> words = new ArrayList<String>();
+        words.add(text);
+        for (char c: splitChars.toCharArray()) {
+//            ArrayList<String> newWords = new ArrayList<String>(words);
+            int len = words.size();
+            for (int i = 0; i < len; ++i) {
+                words.addAll(Arrays.asList(words.get(0).split(String.valueOf(c))));
+                words.remove(0);
+            }
+        }
+        for (int i = 0; i < words.size(); ++i) {
+            if (words.get(i).isEmpty()) {
+                words.remove(i);
+                --i;
+            }
+        }
+        return words;
+    }
+
+    public static int getColorCompat(Context context, int color) {
+//        ColorCompat compat;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+//            compat = (ColorCompat) context;
+            return context.getColor(color);
+        } else {
+//            compat = (ColorCompat) getResources();
+//            compat = (ColorCompat) context.getResources();
+
+            return context.getResources().getColor(color);
+        }
+//        return compat;
+    }
 
     public static int getScreenWidth() {
         return Resources.getSystem().getDisplayMetrics().widthPixels;
@@ -169,10 +253,27 @@ public class Static {
         values.put(MediaStore.MediaColumns.DISPLAY_NAME, fileName);
         values.put(MediaStore.MediaColumns.MIME_TYPE, mimeType);
 
-        values.put(
-                MediaStore.MediaColumns.RELATIVE_PATH,
-                Environment.DIRECTORY_PICTURES + "/" + ADSA_PICTURES_FOLDER
-        );
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            values.put(
+                    MediaStore.MediaColumns.RELATIVE_PATH,
+                    Environment.DIRECTORY_PICTURES + "/" + ADSA_PICTURES_FOLDER
+            );
+        } else {
+            String fullPath = Environment.getExternalStorageDirectory()
+                    + "/"
+                    + Environment.DIRECTORY_PICTURES
+                    + "/"
+                    + ADSA_PICTURES_FOLDER
+                    + "/"
+                    + fileName;
+
+            values.put(
+                    MediaStore.MediaColumns.DATA,
+//                    Environment.DIRECTORY_PICTURES + "/" + ADSA_PICTURES_FOLDER
+                    fullPath
+            );
+        }
+
         destinationUri = context
                 .getContentResolver()
                 .insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
@@ -647,6 +748,7 @@ public class Static {
 
     public static void initDb(Context context) {
         if (db == null) {
+            System.out.println("DB IS INITIALIZING");
             db = Room.databaseBuilder(context, AppDatabase.class, "adsa-db")
                     .addMigrations(
                             AppDatabase.MIGRATION_1_2,

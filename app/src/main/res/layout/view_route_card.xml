@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardUseCompatPadding="true"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/innerConstraintLayout"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+
+            <TextView
+                android:id="@+id/numberLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Маршрут № "
+                android:textStyle="bold"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <TextView
+                android:id="@+id/numberValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                app:layout_constraintStart_toEndOf="@+id/numberLabel"
+                app:layout_constraintBaseline_toBaselineOf="@id/numberLabel" />
+
+<!--            <TextView-->
+<!--                android:id="@+id/datetime"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text=""-->
+<!--                android:textAppearance="@style/TextAppearance.AppCompat.Medium"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/docnumLabel" />-->
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/numberValue"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+                <TableRow
+                    android:layout_marginTop="2dp"
+                    >
+                    <TextView
+                        android:id="@+id/fromLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_weight="0"
+                        android:layout_height="wrap_content"
+                        android:text="Откуда: "
+                        android:textStyle="bold"
+                         />
+
+                    <TextView
+                        android:id="@+id/fromValue"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        />
+                </TableRow>
+
+                <TableRow
+                    android:layout_marginTop="2dp"
+                    >
+                    <TextView
+                        android:id="@+id/toLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Куда: "
+                        android:layout_weight="0"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/toValue"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:text="" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_marginTop="2dp"
+                    >
+                    <TextView
+                        android:id="@+id/startLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_weight="0"
+                        android:layout_height="wrap_content"
+                        android:text="Начало: "
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/startValue"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:text="" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_marginTop="2dp"
+                    >
+                    <TextView
+                        android:id="@+id/endLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0"
+                        android:text="Конец: "
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/endValue"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+
+                        android:text="" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_marginTop="2dp"
+                    >
+                    <TextView
+                        android:id="@+id/peopleLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_weight="0"
+                        android:layout_height="wrap_content"
+                        android:text="Человек: "
+                        android:textStyle="bold"
+                        />
+
+                    <TextView
+                        android:id="@+id/peopleValue"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+
+                        android:text="" />
+                </TableRow>
+            </TableLayout>
+
+
+
+
+
+
+
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

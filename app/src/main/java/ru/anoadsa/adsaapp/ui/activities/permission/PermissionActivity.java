@@ -83,16 +83,17 @@ public class PermissionActivity extends UiActivity<EmptyViewModel> {
         switch (permission) {
             case Manifest.permission.ACCESS_COARSE_LOCATION:
                 return "- Автоматическое заполнение координат при создании обращения\n" +
-                        "- Отслеживание прохождения туристических маршрутов\n" +
+//                        "- Отслеживание прохождения туристических маршрутов\n" +
                         "- Отправка местоположение при видеовызове\n" +
                         "- Отправка местоположения при экстренном вызове";
             case Manifest.permission.ACCESS_FINE_LOCATION:
                 return "Автоматическое заполнение координат при создании обращения\n" +
-                        "- Отслеживание прохождения туристических маршрутов\n" +
+//                        "- Отслеживание прохождения туристических маршрутов\n" +
                         "- Отправка местоположения при видеовызове\n" +
                         "- Отправка местоположения при экстренном вызове";
             case Manifest.permission.ACCESS_BACKGROUND_LOCATION:
-                return "- Отслеживание прохождения туристических маршрутов\n" +
+                return
+//                        "- Отслеживание прохождения туристических маршрутов\n" +
                         "- Определение местоположения при отправке SMS при экстренном вызове";
             case Manifest.permission.WRITE_EXTERNAL_STORAGE:
                 return "Сохранение файлов, прикрепленных к обращениям";
@@ -171,6 +172,7 @@ public class PermissionActivity extends UiActivity<EmptyViewModel> {
                 @Override
                 public void run() {
                     endFailure();
+//                    return false;
                 }
             });
             d.show(getSupportFragmentManager(), "MANUAL_DIALOG");

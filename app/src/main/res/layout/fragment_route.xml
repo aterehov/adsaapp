@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/titleNew"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Новый "
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+        <TextView
+            android:id="@+id/titleRoute"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="маршрут № "
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            app:layout_constraintStart_toEndOf="@+id/titleNew"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+        <TextView
+            android:id="@+id/titleNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="233"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            app:layout_constraintStart_toEndOf="@+id/titleRoute"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+        <Button
+            android:id="@+id/editButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Изменить"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/titleRoute"
+            android:layout_marginTop="16dp"
+            />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/contentCL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/editButton"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="24dp"
+            >
+            <ru.anoadsa.adsaapp.ui.views.DividerTitleView
+                android:id="@+id/pointsDTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:textDTV="Точки маршрута"
+                app:layout_constraintTop_toTopOf="parent"
+                />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/pointsCL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/pointsDTV"
+                android:layout_marginTop="36dp"
+                >
+<!--                <ru.anoadsa.adsaapp.ui.views.RoutePointView-->
+<!--                    android:id="@+id/testPoint1"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    app:layout_constraintTop_toTopOf="parent"-->
+<!--                    android:layout_marginTop="16dp"-->
+<!--                    />-->
+<!--                <ru.anoadsa.adsaapp.ui.views.RoutePointView-->
+<!--                    android:id="@+id/testPoint2"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    app:layout_constraintTop_toBottomOf="@+id/testPoint1"-->
+<!--                    android:layout_marginTop="16dp"-->
+<!--                    />-->
+<!--                <ru.anoadsa.adsaapp.ui.views.RoutePointView-->
+<!--                    android:id="@+id/testPoint3"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    app:layout_constraintTop_toBottomOf="@+id/testPoint2"-->
+<!--                    android:layout_marginTop="16dp"-->
+<!--                    />-->
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <Button
+                android:id="@+id/addPointButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Добавить точку"
+                app:layout_constraintTop_toBottomOf="@+id/pointsCL"
+                android:layout_marginTop="16dp"
+                />
+
+            <ru.anoadsa.adsaapp.ui.views.DividerTitleView
+                android:id="@+id/datetimeDTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:textDTV="Время маршрута"
+                app:layout_constraintTop_toBottomOf="@+id/addPointButton"
+                android:layout_marginTop="36dp"
+                />
+
+<!--            <TextView-->
+<!--                android:id="@+id/beginDateTimeText"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Начало:"-->
+<!--                android:textAppearance="@style/TextAppearance.AppCompat.Medium"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/datetimeDTV"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                android:layout_marginTop="36dp"-->
+<!--                android:layout_marginStart="16dp"-->
+<!--                />-->
+
+<!--            <EditText-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:inputType=""-->
+<!--                android:autofillHints="notApplica"-->
+
+            <ru.anoadsa.adsaapp.ui.views.TitleTextInputView
+                android:id="@+id/beginDate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:titleText="Дата начала*"
+                app:inputHint="Дата начала*"
+                app:inputType="date"
+                app:autofillHints="notApplicable"
+                app:layout_constraintTop_toBottomOf="@+id/datetimeDTV"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/beginTime"
+                android:layout_marginTop="36dp"
+                />
+
+            <ru.anoadsa.adsaapp.ui.views.TitleTextInputView
+                android:id="@+id/beginTime"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:titleText="Время начала*"
+                app:inputHint="Время начала*"
+                app:inputType="time"
+                app:autofillHints="notApplicable"
+                app:layout_constraintTop_toBottomOf="@+id/datetimeDTV"
+                app:layout_constraintStart_toEndOf="@+id/beginDate"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="36dp"
+                />
+
+            <ru.anoadsa.adsaapp.ui.views.TitleTextInputView
+                android:id="@+id/endDate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:titleText="Дата окончания*"
+                app:inputHint="Дата окончания*"
+                app:inputType="date"
+                app:autofillHints="notApplicable"
+                app:layout_constraintTop_toBottomOf="@+id/beginDate"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/endTime"
+                android:layout_marginTop="16dp"
+                />
+
+            <ru.anoadsa.adsaapp.ui.views.TitleTextInputView
+                android:id="@+id/endTime"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:titleText="Время окончания*"
+                app:inputHint="Время окончания*"
+                app:inputType="time"
+                app:autofillHints="notApplicable"
+                app:layout_constraintTop_toBottomOf="@+id/beginDate"
+                app:layout_constraintStart_toEndOf="@+id/endDate"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="16dp"
+                />
+
+            <ru.anoadsa.adsaapp.ui.views.DividerTitleView
+                android:id="@+id/contactDTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:textDTV="Контактное лицо"
+                app:layout_constraintTop_toBottomOf="@+id/endDate"
+                android:layout_marginTop="36dp"
+                />
+
+            <ru.anoadsa.adsaapp.ui.views.TitleTextInputView
+                android:id="@+id/contactSurname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:titleText="Фамилия*"
+                app:inputHint="Фамилия*"
+                app:inputType="textPersonName"
+                app:autofillHints="personFamilyName"
+                app:layout_constraintTop_toBottomOf="@+id/contactDTV"
+                android:layout_marginTop="36dp"
+                />
+
+            <ru.anoadsa.adsaapp.ui.views.TitleTextInputView
+                android:id="@+id/contactName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:titleText="Имя"
+                app:inputHint="Имя"
+                app:inputType="textPersonName"
+                app:autofillHints="personGivenName"
+                app:layout_constraintTop_toBottomOf="@+id/contactSurname"
+                android:layout_marginTop="16dp"
+                />
+
+            <ru.anoadsa.adsaapp.ui.views.TitleTextInputView
+                android:id="@+id/contactMidname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:titleText="Отчество"
+                app:inputHint="Отчество"
+                app:inputType="textPersonName"
+                app:autofillHints="personMiddleName"
+                app:layout_constraintTop_toBottomOf="@+id/contactName"
+                android:layout_marginTop="16dp"
+                />
+
+            <ru.anoadsa.adsaapp.ui.views.TitleTextInputView
+                android:id="@+id/contactPhone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:titleText="Номер телефона*"
+                app:inputHint="Номер телефона*"
+                app:inputType="phone"
+                app:autofillHints="phoneNumber"
+                app:layout_constraintTop_toBottomOf="@+id/contactMidname"
+                android:layout_marginTop="16dp"
+                />
+
+            <ru.anoadsa.adsaapp.ui.views.DividerTitleView
+                android:id="@+id/groupDTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:textDTV="Состав группы"
+                app:layout_constraintTop_toBottomOf="@+id/contactPhone"
+                android:layout_marginTop="36dp"
+                />
+
+            <!--            <TextView-->
+            <!--                android:id="@+id/beginDateTimeText"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:text="Начало:"-->
+            <!--                android:textAppearance="@style/TextAppearance.AppCompat.Medium"-->
+            <!--                app:layout_constraintTop_toBottomOf="@+id/datetimeDTV"-->
+            <!--                app:layout_constraintStart_toStartOf="parent"-->
+            <!--                android:layout_marginTop="36dp"-->
+            <!--                android:layout_marginStart="16dp"-->
+            <!--                />-->
+
+            <!--            <EditText-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:inputType=""-->
+            <!--                android:autofillHints="notApplica"-->
+
+            <ru.anoadsa.adsaapp.ui.views.TitleTextInputView
+                android:id="@+id/adultsCount"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:titleText="Взрослых*"
+                app:inputHint="Взрослых*"
+                app:inputType="number"
+                app:autofillHints="notApplicable"
+                app:inputText="1"
+                app:layout_constraintTop_toBottomOf="@+id/groupDTV"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/childrenCount"
+                android:layout_marginTop="36dp"
+                />
+
+            <ru.anoadsa.adsaapp.ui.views.TitleTextInputView
+                android:id="@+id/childrenCount"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:titleText="Детей до 18 лет*"
+                app:inputHint="Детей до 18 лет*"
+                app:inputType="number"
+                app:autofillHints="notApplicable"
+                app:inputText="0"
+                app:layout_constraintTop_toBottomOf="@+id/groupDTV"
+                app:layout_constraintStart_toEndOf="@+id/adultsCount"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="36dp"
+                />
+
+            <ru.anoadsa.adsaapp.ui.views.DividerTitleView
+                android:id="@+id/locationSendFrequencyDTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:textDTV="Частота отправки координат"
+                app:layout_constraintTop_toBottomOf="@+id/adultsCount"
+                android:layout_marginTop="36dp"
+                />
+
+            <SeekBar
+                android:id="@+id/locationSendFrequencySeekBar"
+                style="@style/Widget.AppCompat.SeekBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="96"
+                android:progress="6"
+                app:layout_constraintTop_toBottomOf="@+id/locationSendFrequencyDTV"
+                android:layout_marginTop="36dp"
+                />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/locationSendFrequencyTextCL"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/locationSendFrequencySeekBar"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                >
+                <TextView
+                    android:id="@+id/locationSendFrequencyTextStart"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Каждые "
+                    style="@style/TextAppearance.AppCompat.Medium"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/locationSendFrequencyTextHourCount"
+                    />
+
+                <TextView
+                    android:id="@+id/locationSendFrequencyTextHourCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1"
+                    style="@style/TextAppearance.AppCompat.Medium"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/locationSendFrequencyTextStart"
+                    app:layout_constraintEnd_toStartOf="@+id/locationSendFrequencyTextHourLabel"
+                    />
+
+                <TextView
+                    android:id="@+id/locationSendFrequencyTextHourLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" ч "
+                    style="@style/TextAppearance.AppCompat.Medium"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/locationSendFrequencyTextHourCount"
+                    app:layout_constraintEnd_toStartOf="@+id/locationSendFrequencyTextMinuteCount"
+                    />
+
+                <TextView
+                    android:id="@+id/locationSendFrequencyTextMinuteCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="30"
+                    style="@style/TextAppearance.AppCompat.Medium"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/locationSendFrequencyTextHourLabel"
+                    app:layout_constraintEnd_toStartOf="@+id/locationSendFrequencyTextMinuteLabel"
+                    />
+
+                <TextView
+                    android:id="@+id/locationSendFrequencyTextMinuteLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" мин"
+                    style="@style/TextAppearance.AppCompat.Medium"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/locationSendFrequencyTextMinuteCount"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <Button
+                android:id="@+id/saveButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Сохранить"
+                app:layout_constraintTop_toBottomOf="@id/locationSendFrequencyTextCL"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="36dp"
+                />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>

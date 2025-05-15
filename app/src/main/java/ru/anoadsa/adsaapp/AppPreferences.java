@@ -13,18 +13,18 @@ import io.reactivex.rxjava3.core.Single;
 import io.reactivex.rxjava3.functions.Function;
 
 public class AppPreferences {
-    private static RxDataStore<Preferences> dataStore;
+    private static RxDataStore<Preferences> dataStoreNoBackup;
 
     private static Preferences.Key<Boolean> isFirstRun = PreferencesKeys.booleanKey("isFirstRun");
 
     public static void initDataStore(Context context) {
-        if (dataStore == null) {
-            dataStore = new RxPreferenceDataStoreBuilder(context, "adsapreferences").build();
+        if (dataStoreNoBackup == null) {
+            dataStoreNoBackup = new RxPreferenceDataStoreBuilder(context, "adsapreferences_nobackup").build();
         }
     }
 
     public static Single<Boolean> getIsFirstRun() {
-        return dataStore.data().map(new Function<Preferences, Boolean>() {
+        return dataStoreNoBackup.data().map(new Function<Preferences, Boolean>() {
             @Override
             public Boolean apply(Preferences prefs) throws Throwable {
                 Boolean isFirstRun = prefs.get(AppPreferences.isFirstRun);
@@ -38,7 +38,7 @@ public class AppPreferences {
 
     @NonNull
     public static Single<Preferences> setIsFirstRun(boolean isFirstRun) {
-        return dataStore.updateDataAsync(new Function<Preferences, Single<Preferences>>() {
+        return dataStoreNoBackup.updateDataAsync(new Function<Preferences, Single<Preferences>>() {
             @Override
             public Single<Preferences> apply(Preferences prefsIn) throws Throwable {
                 MutablePreferences mutablePreferences = prefsIn.toMutablePreferences();

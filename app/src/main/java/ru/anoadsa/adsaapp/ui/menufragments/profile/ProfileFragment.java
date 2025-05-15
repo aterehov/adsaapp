@@ -82,49 +82,49 @@ public class ProfileFragment extends UiMenuFragment<ProfileViewModel, FragmentPr
             if (profileSurnameTTI.getInputText() == null
                 || profileSurnameTTI.getInputText().isEmpty()) {
                 Snackbar.make(profileTopCL, "Введите фамилию", Snackbar.LENGTH_LONG).show();
-                return;
+//                return false;
             }
             if (profileEmailTTI.getInputText() != null
                 && !profileEmailTTI.getInputText().isEmpty()
                 && !profileEmailTTI.getInputText().contains("@")) {
                 Snackbar.make(profileTopCL, "Неверный формат E-mail", Snackbar.LENGTH_LONG)
                         .show();
-                return;
+//                return false;
             }
             if (profileCarNumberTTI.getInputText() != null
                 && !profileCarNumberTTI.getInputText().isEmpty()
                 && !Static.checkCarNumber(profileCarNumberTTI.getInputText())) {
                 Snackbar.make(profileTopCL, "Неверный формат номера транспортного средства",
                         Snackbar.LENGTH_LONG).show();
-                return;
+//                return false;
             }
             if (profileOsagoTTI.getInputText() != null
                 && !profileOsagoTTI.getInputText().isEmpty()
                 && !Static.checkOsago(profileOsagoTTI.getInputText())) {
                 Snackbar.make(profileTopCL, "Неверный формат ОСАГО",
                         Snackbar.LENGTH_LONG).show();
-                return;
+//                return false;
             }
             if (profileSnilsTTI.getInputText() != null
                 && !profileSnilsTTI.getInputText().isEmpty()
                 && !Static.checkSnils(profileSnilsTTI.getInputText())) {
                 Snackbar.make(profileTopCL, "Неверный формат СНИЛС",
                         Snackbar.LENGTH_LONG).show();
-                return;
+//                return false;
             }
             if (profileMedPolisTTI.getInputText() != null
                 && !profileMedPolisTTI.getInputText().isEmpty()
                 && !Static.checkMedPolis(profileMedPolisTTI.getInputText())) {
                 Snackbar.make(profileTopCL, "Неверный формат медицинского полиса",
                         Snackbar.LENGTH_LONG).show();
-                return;
+//                return false;
             }
             if (profileBirthdayTTI.getInputText() != null
                 && !profileBirthdayTTI.getInputText().isEmpty()
                 && !Static.checkDateString(profileBirthdayTTI.getInputText())) {
                 Snackbar.make(profileTopCL, "Формат даты рождения: ДД.ММ.ГГГГ",
                         Snackbar.LENGTH_LONG).show();
-                return;
+//                return false;
             }
             viewModel.sendUserToServer(
                     profileSurnameTTI.getInputText(),
@@ -140,6 +140,7 @@ public class ProfileFragment extends UiMenuFragment<ProfileViewModel, FragmentPr
                     profileDisabilityCategoryTSV.getSelection(),
                     profileOnlySMSCheckbox.isChecked()
             );
+//            return false;
         }
     };
 

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/instructionText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Категория организации"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ru.anoadsa.adsaapp.ui.views.TitleSpinnerView
+        android:id="@+id/incidentOrganisationCategoryTSV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/instructionText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:textTSV="Категория организации*"
+        android:layout_marginTop="0dp"
+        />
+
+<!--    <TextView-->
+<!--        android:id="@+id/incidentNominatimMentionText"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="@string/incidentNominatimMentionText"-->
+<!--        android:textColor="@color/light_blue_600"-->
+<!--        android:layout_marginTop="16dp"-->
+<!--        android:textAppearance="@style/TextAppearance.AppCompat.Small"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/incidentLocationAddressHint" />-->
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -65,11 +65,7 @@ public class Net {
 
         request.addHeader(
                 "User-Agent",
-                DevSettings.APP_NAME
-                        + "/"
-                        + DevSettings.APP_VERSION
-                        + " "
-                        + System.getProperty("http.agent")
+                DevSettings.getUserAgent()
         );
 
         return request.build();

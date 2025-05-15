@@ -9,6 +9,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Введите свое местоположение"
+        android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -76,15 +77,15 @@
         app:layout_constraintTop_toBottomOf="@+id/incidentLocationAddressTTIV"
         />
 
-    <TextView
-        android:id="@+id/incidentNominatimMentionText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/incidentNominatimMentionText"
-        android:textColor="@color/light_blue_600"
-        android:layout_marginTop="16dp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Small"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/incidentLocationAddressHint" />
+<!--    <TextView-->
+<!--        android:id="@+id/incidentNominatimMentionText"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="@string/incidentNominatimMentionText"-->
+<!--        android:textColor="@color/light_blue_600"-->
+<!--        android:layout_marginTop="16dp"-->
+<!--        android:textAppearance="@style/TextAppearance.AppCompat.Small"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/incidentLocationAddressHint" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,7 +8,7 @@ import java.util.HashMap;
 public class ChatNotificationManager {
     private static HashMap<String, Integer> incidentIdToNotificationId = new HashMap<>();
     private static HashMap<String, Integer> incidentIdToMessageCount = new HashMap<>();
-    private static MutableLiveData<HashMap<String, Integer>> ldIncidentIdToMessageCount = new MutableLiveData<HashMap<String, Integer>>(incidentIdToMessageCount);
+    private static MutableLiveData<HashMap<String, Integer>> ldIncidentIdToMessageCount = new MutableLiveData<HashMap<String, Integer>>(new HashMap<>());
     private static int nextNotificationId = 0;
 
 //    public static void init() {
@@ -22,16 +22,16 @@ public class ChatNotificationManager {
     }
 
     public static Integer getNotificationCount(String incidentId) {
-        if (!incidentIdToMessageCount.containsKey(incidentId)) {
+        if (!ldIncidentIdToMessageCount.getValue().containsKey(incidentId)) {
             return 0;
         } else {
-            return incidentIdToMessageCount.get(incidentId);
+            return ldIncidentIdToMessageCount.getValue().get(incidentId);
         }
     }
 
     public static void setNotificationCount(String incidentId, int count) {
-        incidentIdToMessageCount.put(incidentId, count);
-        ldIncidentIdToMessageCount.postValue(incidentIdToMessageCount);
+        ldIncidentIdToMessageCount.getValue().put(incidentId, count);
+        ldIncidentIdToMessageCount.postValue(ldIncidentIdToMessageCount.getValue());
     }
 
 //    @Nullable

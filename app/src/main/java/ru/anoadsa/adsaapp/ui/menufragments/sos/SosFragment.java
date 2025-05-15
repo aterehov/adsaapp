@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -45,8 +46,8 @@ public class SosFragment extends UiMenuFragment<SosViewModel, FragmentSosBinding
     private FixedDonutProgress sosProgress;
     private FixedDonutProgress sosVideoProgress;
 
-    private Handler sosHandler = new Handler();
-    private Handler sosVideoHandler = new Handler();
+    private Handler sosHandler = new Handler(Looper.getMainLooper());
+    private Handler sosVideoHandler = new Handler(Looper.getMainLooper());
 
     private Disposable sosAnimationDisposable;
     private Disposable sosVideoAnimationDisposable;
@@ -54,6 +55,11 @@ public class SosFragment extends UiMenuFragment<SosViewModel, FragmentSosBinding
     private Runnable sosRunnable = new Runnable() {
         @Override
         public void run() {
+            if (!sosAnimationDisposable.isDisposed()) {
+                sosAnimationDisposable.dispose();
+            }
+            sosProgress.setProgress(0);
+
             if (Static.checkPermission(getContext(), Manifest.permission.SEND_SMS)) {
                 viewModel.resetAll();
                 new SelectGeoDialog().show(getActivity().getSupportFragmentManager(), "GEO_DIALOG");
@@ -62,18 +68,25 @@ public class SosFragment extends UiMenuFragment<SosViewModel, FragmentSosBinding
                 dial.setData(Uri.parse("tel:112"));
                 startActivity(dial);
             }
+//            return false;
         }
     };
 
     private Runnable sosVideoRunnable = new Runnable() {
         @Override
         public void run() {
+            if (!sosVideoAnimationDisposable.isDisposed()) {
+                sosVideoAnimationDisposable.dispose();
+            }
+            sosVideoProgress.setProgress(0);
+
             VideoSharedViewModel videoSharedVM = new ViewModelProvider(getActivity())
                     .get(VideoSharedViewModel.class);
             videoSharedVM.setHasIncident(false);
             videoSharedVM.setIncident(null);
 //                startActivity(new Intent(getContext(), VideoActivity.class));
             videoLauncher.launch(null);
+//            return false;
         }
     };
 
@@ -244,6 +257,8 @@ public class SosFragment extends UiMenuFragment<SosViewModel, FragmentSosBinding
                 Intent dial = new Intent(Intent.ACTION_DIAL);
                 dial.setData(Uri.parse("tel:112"));
                 startActivity(dial);
+
+                viewModel.setNext(false);
             }
         });
     }
@@ -269,5 +284,10 @@ public class SosFragment extends UiMenuFragment<SosViewModel, FragmentSosBinding
     @Override
     public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
         super.onViewStateRestored(savedInstanceState);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
     }
 }

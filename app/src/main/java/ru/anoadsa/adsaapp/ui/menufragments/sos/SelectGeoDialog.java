@@ -92,7 +92,7 @@ public class SelectGeoDialog extends DialogFragment {
         latTTI = binding.incidentLocationLatitudeTTIV;
         lonTTI = binding.incidentLocationLongitudeTTIV;
         addrTTI = binding.incidentLocationAddressTTIV;
-        nominatimText = binding.incidentNominatimMentionText;
+//        nominatimText = binding.incidentNominatimMentionText;
 
         latTTI.setOnFocusChangeListenerTTI(
                 TitleTextInputView.doOnTextChangedOnlyIfHasFocus
@@ -112,6 +112,7 @@ public class SelectGeoDialog extends DialogFragment {
                     @Override
                     public void run() {
                         searchAddressByCoordinates();
+//                        return false;
                     }
                 }
         );
@@ -122,6 +123,7 @@ public class SelectGeoDialog extends DialogFragment {
                     @Override
                     public void run() {
                         searchAddressByCoordinates();
+//                        return false;
                     }
                 }
         );
@@ -132,6 +134,7 @@ public class SelectGeoDialog extends DialogFragment {
                     @Override
                     public void run() {
                         searchCoordinatesByAddress();
+//                        return false;
                     }
                 }
         );
@@ -140,14 +143,14 @@ public class SelectGeoDialog extends DialogFragment {
         lonTTI.setDoOnTextChangedEnabled(false);
         addrTTI.setDoOnTextChangedEnabled(false);
 
-        nominatimText.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(Intent.ACTION_VIEW,
-                        Uri.parse("https://www.openstreetmap.org/copyright")
-                ));
-            }
-        });
+//        nominatimText.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(new Intent(Intent.ACTION_VIEW,
+//                        Uri.parse("https://www.openstreetmap.org/copyright")
+//                ));
+//            }
+//        });
 
 
         viewModel.getLatitude().observe(

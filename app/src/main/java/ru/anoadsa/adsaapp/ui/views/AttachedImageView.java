@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ru.anoadsa.adsaapp.R;
+import ru.anoadsa.adsaapp.Static;
 
 public class AttachedImageView extends ConstraintLayout {
     private String text;
@@ -171,7 +172,7 @@ public class AttachedImageView extends ConstraintLayout {
     public void setUri(Uri uri) {
         imageView.setImageURI(uri);
 //        imageView.setBackgroundColor(getResources().getColor(R.color.white));
-        imageView.setBackgroundColor(getResources().getColor(R.color.transparent));
+        imageView.setBackgroundColor(Static.getColorCompat(getContext(), R.color.transparent));
         invalidate();
         requestLayout();
     }

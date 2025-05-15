@@ -80,6 +80,8 @@ public class VideoActivity extends UiActivity<VideoViewModel> {
             return quitIfNeeded(view, request.getUrl().getPath());
         }
 
+        /** @noinspection RedundantSuppression*/
+        @SuppressWarnings("deprecation")
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
             return quitIfNeeded(view, url);
@@ -197,6 +199,8 @@ public class VideoActivity extends UiActivity<VideoViewModel> {
                 return quitIfNeeded(view, request.getUrl().getPath());
             }
 
+            /** @noinspection RedundantSuppression*/
+            @SuppressWarnings("deprecation")
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 return quitIfNeeded(view, url);
@@ -225,6 +229,8 @@ public class VideoActivity extends UiActivity<VideoViewModel> {
             }
         });
         webView.loadUrl(viewModel.getVideo().getValue().getConfomeetLink());
+
+        new InstructionFragment().show(getSupportFragmentManager(), "INSTRUCTION_VIDEO");
     }
 
     private void refreshLocation() {

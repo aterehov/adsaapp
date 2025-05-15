@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.Keep;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -18,6 +19,7 @@ import java.util.Objects;
 import ru.anoadsa.adsaapp.databinding.FragmentHomeBinding;
 import ru.anoadsa.adsaapp.ui.menufragments.home.HomeViewModel;
 
+//@Keep
 public abstract class UiMenuFragment<T extends ViewModel, B extends ViewBinding> extends Fragment {
     protected B binding;
     protected View root;
@@ -31,6 +33,7 @@ public abstract class UiMenuFragment<T extends ViewModel, B extends ViewBinding>
         this.vbclass = vbclass;
     }
 
+//    @Keep
     protected void getRoot(@NonNull LayoutInflater inflater, ViewGroup container) {
 //        binding = FragmentHomeBinding.inflate(inflater, container, false);
         try {

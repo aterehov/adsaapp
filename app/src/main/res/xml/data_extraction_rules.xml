@@ -9,11 +9,13 @@
         <include .../>
         <exclude .../>
         -->
+        <exclude domain="file" path="./datastore/adsapreferences_nobackup.preferences_pb" />
     </cloud-backup>
-    <!--
+
     <device-transfer>
-        <include .../>
-        <exclude .../>
+<!--        <include .../>-->
+<!--        <exclude .../>-->
+        <exclude domain="file" path="./datastore/adsapreferences_nobackup.preferences_pb" />
     </device-transfer>
-    -->
+
 </data-extraction-rules>

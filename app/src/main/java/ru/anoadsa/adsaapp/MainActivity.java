@@ -3,6 +3,7 @@ package ru.anoadsa.adsaapp;
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -159,7 +160,13 @@ public class MainActivity extends UiActivity<MainViewModel> {
                 if (viewModel.getAppIsLaunching().getValue()) {
                     return;
                 }
-                if (isFirstRun != null) {
+                if (viewModel.getLoggedIn() == null) {
+                    return;
+                }
+                if (
+                        isFirstRun != null
+//                        && viewModel.getLoggedIn().getValue()
+                ) {
                     if (isFirstRun
                         && Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
                     ) {
@@ -180,12 +187,20 @@ public class MainActivity extends UiActivity<MainViewModel> {
             @Override
             public void onChanged(Boolean isLaunching) {
                 if (isLaunching) {
-                    Static.initDb(getApplicationContext());
-                    AppPreferences.initDataStore(getApplicationContext());
-                    Geo.initAutoselectBetterLocation();
+//                    try {
+//                        DevSettings.loadAppVersion(getApplicationContext());
+//                    } catch (PackageManager.NameNotFoundException e) {
+//                        throw new RuntimeException(e);
+//                    }
+//
+//                    Static.initDb(getApplicationContext());
+//                    AppPreferences.initDataStore(getApplicationContext());
+//                    Geo.initAutoselectBetterLocation();
+//
+//                    SosButtonWorker.subscribeOnLocationUpdates();
+//                    CheckMessageCountWatchdog.schedule(getApplicationContext());
 
-                    SosButtonWorker.subscribeOnLocationUpdates();
-                    CheckMessageCountWatchdog.schedule(getApplicationContext());
+                    Static.runOnStart(getApplicationContext());
 
                     viewModel.finishAppLaunching();
                 }

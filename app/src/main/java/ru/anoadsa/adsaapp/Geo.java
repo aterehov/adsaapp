@@ -8,6 +8,7 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Build;
+import android.os.Bundle;
 import android.os.HandlerThread;
 import android.os.Looper;
 import android.util.Pair;
@@ -38,6 +39,11 @@ import io.reactivex.rxjava3.schedulers.Schedulers;
 import okhttp3.Response;
 
 public class Geo {
+    public static double a = 6378137.0; // equatorial radius
+    public static double f = 1 / 298.257223563; // flattening
+//    public static double b = getB(); // polar radius
+//    public static double e = getE(); // eccentricity
+
     private static LocationManager locationManager;
 
     private static boolean hasGps;
@@ -73,6 +79,16 @@ public class Geo {
 //            usedGps = true;
             locationByGps.postValue(location);
         }
+
+        // This method is needed for compatibility reasons
+        /** @noinspection RedundantSuppression*/
+        @SuppressWarnings("deprecation")
+        @Override
+        public void onStatusChanged(String provider, int status, Bundle extras) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                LocationListener.super.onStatusChanged(provider, status, extras);
+            }
+        }
     };
 
     private static LocationListener networkLocationListener = new LocationListener() {
@@ -80,6 +96,16 @@ public class Geo {
         public void onLocationChanged(@NonNull Location location) {
 //            usedNetwork = true;
             locationByNetwork.postValue(location);
+        }
+
+        // This method is needed for compatibility reasons
+        /** @noinspection RedundantSuppression*/
+        @SuppressWarnings("deprecation")
+        @Override
+        public void onStatusChanged(String provider, int status, Bundle extras) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                LocationListener.super.onStatusChanged(provider, status, extras);
+            }
         }
     };
 
@@ -98,7 +124,7 @@ public class Geo {
 //        executor = Executors.newSingleThreadExecutor();
 //    }
 
-    public static void updateLocation(Context context) {
+    private static void updateLocation(Context context) {
         usedGps = false;
         usedNetwork = false;
         if (hasGps
@@ -396,4 +422,65 @@ public class Geo {
             }
         });
     }
+
+    /** Get equatorial radius **/
+    public static double getA() {
+        return a;
+    }
+
+    /** Get flattening **/
+    public static double getF() {
+        return f;
+    }
+
+    /** Get polar radius **/
+    public static double getB() {
+        return a * (1 - f);
+    }
+
+    /** Get eccentricity **/
+    public static double getE() {
+        return 2 * f - Math.pow(f, 2);
+    }
+
+    /** Get reduced latitude from geographic latitude **/
+    public static double getBeta(double phi) {
+        return Math.atan((1 - f) * Math.tan(phi));
+    }
+
+    public static double getReducedLatitude(double lat) {
+        return getBeta(lat);
+    }
+
+    /** Get central angle between two points **/
+    public static double getRo(double lon1, double lon2, double lat1, double lat2) {
+        return Math.acos(Math.sin(lat1) * Math.sin(lat2) + Math.cos(lat1) * Math.cos(lat2) * Math.cos(lon1 - lon2));
+    }
+
+    public static double getCentralAngle(double lat1, double lat2, double lon1, double lon2) {
+        return getRo(lon1, lon2, lat1, lat2);
+    }
+
+    public static double getGeoDistance(double lat1, double lat2, double lon1, double lon2) {
+        // coordinates should be converted from degrees to radians
+        lat1 = Math.toRadians(lat1);
+        lat2 = Math.toRadians(lat2);
+        lon1 = Math.toRadians(lon1);
+        lon2 = Math.toRadians(lon2);
+
+        double beta1 = getReducedLatitude(lat1);
+        double beta2 = getReducedLatitude(lat2);
+
+        double ro = getCentralAngle(lat1, lat2, lon1, lon2);
+
+        double p = (beta1 + beta2) / 2;
+        double q = (beta2 - beta1) / 2;
+
+        double x = (ro - Math.sin(ro)) * Math.pow(Math.sin(p), 2) * Math.pow(Math.cos(q), 2) / Math.pow(Math.cos(ro / 2), 2);
+        double y = (ro + Math.sin(ro)) * Math.pow(Math.cos(p), 2) * Math.pow(Math.sin(q), 2) / Math.pow(Math.sin(ro / 2), 2);
+
+        return a * (ro - f * (x + y) / 2);
+    }
+
+
 }

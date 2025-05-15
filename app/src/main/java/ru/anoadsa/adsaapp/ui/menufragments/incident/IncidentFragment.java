@@ -585,6 +585,7 @@ public class IncidentFragment extends UiMenuFragment<IncidentViewModel, Fragment
         @Override
         public void run() {
             incidentOrganisationTSV.setEnabledTSV(false);
+//            return false;
         }
     };
 
@@ -662,7 +663,7 @@ public class IncidentFragment extends UiMenuFragment<IncidentViewModel, Fragment
 
         incidentImagesListCL = binding.incidentImagesListCL;
 
-        incidentNominatimMentionText = binding.incidentNominatimMentionText;
+//        incidentNominatimMentionText = binding.incidentNominatimMentionText;
 
         incidentVideoButton = binding.incidentVideoButton;
     }
@@ -973,6 +974,7 @@ public class IncidentFragment extends UiMenuFragment<IncidentViewModel, Fragment
                     @Override
                     public void run() {
                         searchOrganisations();
+//                        return false;
                     }
                 }
 //                new TimerTask() {
@@ -1018,6 +1020,7 @@ public class IncidentFragment extends UiMenuFragment<IncidentViewModel, Fragment
 //                        searchOrganisations();
                         searchAddressByCoordinates();
 //                        }
+//                        return false;
                     }
                 }
         );
@@ -1057,6 +1060,7 @@ public class IncidentFragment extends UiMenuFragment<IncidentViewModel, Fragment
                         searchOrganisations();
                         searchAddressByCoordinates();
 //                        }
+//                        return false;
                     }
                 }
         );
@@ -1094,6 +1098,7 @@ public class IncidentFragment extends UiMenuFragment<IncidentViewModel, Fragment
                         searchCoordinatesByAddress();
                         // Lat and long will be updated by viewmodel and will auto call organisation
                         // search
+//                        return false;
                     }
                 }
         );
@@ -1127,14 +1132,14 @@ public class IncidentFragment extends UiMenuFragment<IncidentViewModel, Fragment
             }
         });
 
-        incidentNominatimMentionText.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(Intent.ACTION_VIEW,
-                        Uri.parse("https://www.openstreetmap.org/copyright")
-                ));
-            }
-        });
+//        incidentNominatimMentionText.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(new Intent(Intent.ACTION_VIEW,
+//                        Uri.parse("https://www.openstreetmap.org/copyright")
+//                ));
+//            }
+//        });
 
         incidentChatButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -1370,14 +1375,14 @@ public class IncidentFragment extends UiMenuFragment<IncidentViewModel, Fragment
 //                            .findNavController(requireActivity(), R.id.nav_host_fragment_content_main)
 //                            .
                 }
-                if ((mode.equals("create")
-//                        || mode.equals("edit")
-                        || mode.equals("view"))
-                        && !viewModel.isNeededInfoLoaded()
-                ) {
-                    viewModel.loadNeededInfo();
-                    return;
-                }
+//                if ((mode.equals("create")
+////                        || mode.equals("edit")
+//                        || mode.equals("view"))
+//                        && !viewModel.isNeededInfoLoaded()
+//                ) {
+//                    viewModel.loadNeededInfo();
+//                    return;
+//                }
                 if (mode.equals("create")) {
                     incidentDocnumValue.setVisibility(View.GONE);
                     incidentBasicInfoTL.setVisibility(View.GONE);
@@ -1474,6 +1479,8 @@ public class IncidentFragment extends UiMenuFragment<IncidentViewModel, Fragment
                     incidentAddPhotoButton.setVisibility(View.VISIBLE);
                     incidentAddDocumentButton.setVisibility(View.VISIBLE);
 
+                    incidentLocationAddressHint.setVisibility(View.VISIBLE);
+
                     incidentOrganisationCategoryTSV.setEnabledTSV(true);
 //                    incidentOrganisationTSV.setEnabledTSV(true);
                     incidentSearchRadiusTTIV.setTTIEnabled(true);
@@ -1520,6 +1527,14 @@ public class IncidentFragment extends UiMenuFragment<IncidentViewModel, Fragment
 //                ) {
 //                    viewModel.loadNeededInfo();
 //                }
+                if ((mode.equals("create")
+//                        || mode.equals("edit")
+                        || mode.equals("view"))
+                        && !viewModel.isNeededInfoLoaded()
+                ) {
+                    viewModel.loadNeededInfo();
+                    return;
+                }
                 modeObserverFinished = true;
                 viewModel.rerunIncidentObserver();
             }

@@ -48,6 +48,9 @@
         android:id="@+id/chatMessageInput"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:autofillHints="notApplicable"
+
+        android:inputType="textAutoCorrect|textCapSentences|textShortMessage"
         android:maxLines="4"
         android:text=""
         android:hint="Введите сообщение"

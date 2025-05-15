@@ -2,7 +2,7 @@ package ru.anoadsa.adsaapp.models.data;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Comparator;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -37,6 +37,10 @@ public class AbonentsNearbyMap {
         ArrayList<String> r = new ArrayList<String>(nameToAbonent.keySet());
         r.sort(String::compareToIgnoreCase);
         return r;
+    }
+
+    public Collection<Abonent> getAbonents() {
+        return nameToAbonent.values();
     }
 
     public Single<Pair<Boolean, String>> findAbonentsNearby(String categoryId, float radius,

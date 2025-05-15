@@ -4,12 +4,12 @@ plugins {
 
 android {
     namespace 'ru.anoadsa.adsaapp'
-    compileSdk 35
 
     defaultConfig {
         applicationId "ru.anoadsa.adsaapp"
         minSdk 21
-        targetSdk 35
+        targetSdk 34
+        compileSdk 35
         versionCode 1
         versionName "1.00"
 
@@ -19,14 +19,20 @@ android {
             annotationProcessorOptions {
                 arguments += ["room.schemaLocation": "$projectDir/schemas".toString()]
             }
+
         }
     }
 
     buildTypes {
         release {
-            minifyEnabled false
+            debuggable false
+            minifyEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.debug
+        }
+        debug {
+            debuggable true
         }
     }
     compileOptions {
@@ -39,6 +45,14 @@ android {
     }
     dataBinding {
         enabled true
+    }
+}
+
+gradle.projectsEvaluated {
+    tasks.withType(JavaCompile).tap {
+        configureEach {
+            options.compilerArgs << "-Xlint:deprecation"
+        }
     }
 }
 
@@ -64,6 +78,12 @@ dependencies {
     implementation libs.work.rxjava3
     implementation libs.webkit
     implementation libs.circleprogress
+    implementation libs.mapsforge.core
+    implementation libs.mapsforge.map
+    implementation libs.mapsforge.map.reader
+    implementation libs.mapsforge.themes
+    implementation libs.mapsforge.map.android
+    implementation libs.androidsvg
     coreLibraryDesugaring libs.desugar.jdk.libs
     annotationProcessor libs.room.compiler
     testImplementation libs.junit

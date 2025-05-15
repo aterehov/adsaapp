@@ -22,6 +22,10 @@ import ru.anoadsa.adsaapp.R;
 import ru.anoadsa.adsaapp.Static;
 
 public class ChatMessageView extends ConstraintLayout {
+//    private interface ColorCompat {
+//        public int getColor(int id);
+//    }
+
     private String text;
 
     private TextView textView;
@@ -208,6 +212,15 @@ public class ChatMessageView extends ConstraintLayout {
     }
 
     private void cardViewBackgroundColorBySenderType(int senderType) {
+//        ColorCompat compat;
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+//            compat = (ColorCompat) getContext();
+//        } else {
+////            compat = (ColorCompat) getResources();
+//            compat = (ColorCompat) getContext().getResources();
+//        }
+
+//        Static.ColorCompat compat = Static.getColorCompat(getContext());
 
         switch (senderType) {
             case 0:
@@ -220,13 +233,21 @@ public class ChatMessageView extends ConstraintLayout {
                 );
                 return;
             case -1:
-                this.cardView.setCardBackgroundColor(getResources().getColor(R.color.gray_400));
+                this.cardView.setCardBackgroundColor(
+//                        getResources().getColor(R.color.gray_400)
+//                        compat.getColor(R.color.gray_400)
+                        Static.getColorCompat(getContext(), R.color.gray_400)
+                );
                 return;
             case 2:
-                this.cardView.setCardBackgroundColor(getResources().getColor(
-//                        R.color.teal_200
-                        R.color.light_blue_400
-                ));
+                this.cardView.setCardBackgroundColor(
+//                        compat.getColor(R.color.light_blue_400)
+                        Static.getColorCompat(getContext(), R.color.light_blue_400)
+//                        getResources().getColor(
+////                        R.color.teal_200
+//                        R.color.light_blue_400
+//                )
+                );
             default:
                 return;
         }

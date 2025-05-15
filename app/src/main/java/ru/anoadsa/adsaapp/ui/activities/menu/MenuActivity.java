@@ -27,6 +27,7 @@ import com.google.android.material.snackbar.Snackbar;
 import java.util.Objects;
 
 import ru.anoadsa.adsaapp.R;
+import ru.anoadsa.adsaapp.Static;
 import ru.anoadsa.adsaapp.databinding.ActivityMainBinding;
 import ru.anoadsa.adsaapp.models.data.Incident;
 import ru.anoadsa.adsaapp.ui.EmptyViewModel;
@@ -118,7 +119,9 @@ public class MenuActivity extends UiActivity<MenuViewModel> {
 //                R.id.nav_gallery,
 //                R.id.nav_slideshow,
                 R.id.nav_incidents,
-                R.id.nav_profile
+                R.id.nav_profile,
+                R.id.nav_map,
+                R.id.nav_about
         )
                 .setOpenableLayout(drawer)
                 .build();
@@ -161,7 +164,7 @@ public class MenuActivity extends UiActivity<MenuViewModel> {
                 if (firstRun
                         && (action == null || action.isEmpty())
                 ) {
-                    navController.navigate(R.id.nav_sos);
+//                    navController.navigate(R.id.nav_sos);
                     viewModel.setFirstRun(false);
                 }
             }
@@ -188,8 +191,13 @@ public class MenuActivity extends UiActivity<MenuViewModel> {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Static.runOnStart(getApplicationContext());
+
         setViewModel(MenuViewModel.class);
         super.onCreate(savedInstanceState);
+
+//        Static.initDb(getApplicationContext());
+
         sharedVM = new ViewModelProvider(this).get(MenuSharedViewModel.class);
         configureSharedViewModelActions();
 
@@ -207,9 +215,11 @@ public class MenuActivity extends UiActivity<MenuViewModel> {
             incident.setId(incidentId);
             chatSharedVM.setIncident(incident);
 
-            navController.navigate(R.id.nav_sos);
-            navController.navigate(R.id.nav_incidents);
-            navController.navigate(R.id.action_incidents_to_chat);
+//            navController.navigate(R.id.nav_sos);
+//            navController.navigate(R.id.nav_incidents);
+//            navController.navigate(R.id.action_incidents_to_chat);
+
+            navController.navigate(R.id.nav_chat);
 
 //            getSupportFragmentManager()
 //                    .beginTransaction()

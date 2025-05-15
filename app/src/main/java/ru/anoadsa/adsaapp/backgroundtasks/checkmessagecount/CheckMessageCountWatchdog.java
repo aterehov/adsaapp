@@ -149,6 +149,9 @@ public class CheckMessageCountWatchdog extends Worker {
 //                    Data.fromByteArray("Found cancelled work, rescheduled it".getBytes())
                     MessageData.make("Found cancelled work, rescheduled it")
             );
+        } else if (info.getState() == WorkInfo.State.RUNNING) {
+            System.out.println("WATCHDOG last work is running, letting it continue and finishing");
+            return Result.success(MessageData.make("Found already running worker"));
         }
         // Time difference is checked with 10% buffer to avoid rescheduling when worker is running but did not update the map yet
         if (CheckMessageCountWorker.getLastUpdatedIncidentMap() == null
@@ -202,6 +205,8 @@ public class CheckMessageCountWatchdog extends Worker {
                                 TimeUnit.MILLISECONDS
                         )
                         .build();
+
+        System.out.println("!!!!! SCHEDULING WATCHDOG !!!!!");
 
         WorkManager.getInstance(context.getApplicationContext()).enqueueUniquePeriodicWork(
                 "checkMessageCountWatchdog",

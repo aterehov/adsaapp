@@ -462,7 +462,7 @@ public class SosButtonWorker extends Worker {
 //                            if (user.getDisabilityCategory() != null
 //                                    && !user.getDisabilityCategory().isEmpty()
 //                                    && !user.getDisabilityCategory().equals("-")) {
-                            s[0] += "  - Категория инвалидности: " + user.getDisabilityCategory() + "\n";
+                            s[0] += "- Категория инвалидности: " + user.getDisabilityCategory() + "\n";
 //                            }
                         }
 
